@@ -30,6 +30,9 @@
   --color-redspace-200: #CF0F47;
   --color-redspace-300: #FF0B55;
   --color-redspace-400: #FFDEDE;
+
+  --shadow-dark: 4px 4px #3B3486;
+  --shadow-light: 4px 4px #332941;
 }
 
 @media (prefers-color-scheme: dark) {

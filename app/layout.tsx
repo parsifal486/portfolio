@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Roboto, Outfit, Ovo } from 'next/font/google';
 import './globals.css';
 
-
 const roboto = Roboto({
   weight: ['400', '700'],
   subsets: ['latin'],
@@ -32,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${roboto.variable} ${outfit.variable} ${ovo.variable} antialiased`}
       >

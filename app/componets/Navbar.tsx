@@ -21,7 +21,7 @@ export const Navbar = () => {
     <nav className="bg-purplespace-200 fixed z-50 flex h-16 w-full flex-row items-center justify-between px-5 py-4 lg:px-8 xl:px-[8%]">
       <a className="flex flex-row items-center gap-2">
         <Image src={logo.dimond1} alt="logo" width={50} height={50} />
-        <div className="text-2xl font-bold">Ryuteakwoo's</div>
+        <div className="text-2xl font-bold">Ryuteakwoo&apos;s</div>
       </a>
 
       <ul className="font-outfit hidden flex-row items-center justify-between gap-8 rounded-full px-12 py-3 md:flex lg:gap-10">
@@ -43,7 +43,7 @@ export const Navbar = () => {
       </ul>
 
       <div className="flex flex-row items-center gap-4">
-        <button>
+        <button className="cursor-pointer">
           <icon.daymode size={25} />
         </button>
 
