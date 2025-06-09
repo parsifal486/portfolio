@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef } from 'react';
 import { logo, icon } from '@/assets/assets';
 import Image from 'next/image';
@@ -18,7 +19,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-purplespace-200 fixed z-50 flex h-16 w-full flex-row items-center justify-between px-5 py-4 lg:px-8 xl:px-[8%]">
+    <nav className="bg-purplespace-100 fixed z-50 flex h-16 w-full flex-row items-center justify-between px-5 py-4 lg:px-8 xl:px-[8%]">
       <a className="flex flex-row items-center gap-2">
         <Image src={logo.dimond1} alt="logo" width={50} height={50} />
         <div className="text-2xl font-bold">Ryuteakwoo&apos;s</div>
@@ -65,10 +66,7 @@ export const Navbar = () => {
         ref={mobileMenuRef}
         className="bg-purplespace-200 fixed top-0 -right-64 bottom-0 flex h-screen w-64 flex-col gap-4 px-10 py-20 transition duration-300 md:hidden"
       >
-        <button
-          className="absolute top-5 right-5 cursor-pointer"
-          onClick={closeMenu}
-        >
+        <button className="absolute top-5 right-5 cursor-pointer" onClick={closeMenu}>
           <icon.closepanel size={25} />
         </button>
 

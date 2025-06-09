@@ -1,0 +1,30 @@
+import React from 'react';
+import { img } from '@/assets/assets';
+import Image from 'next/image';
+
+export const HomeSection = () => {
+  return (
+    <div className="mx-auto flex h-screen w-11/12 flex-col items-center justify-center md:flex-row md:justify-start md:pl-40">
+      <div className="margin-5 hover:border-font-emphasize ml-50 h-40 w-40 overflow-hidden rounded-full hover:border-2 md:mr-10 md:ml-0 md:h-110 md:w-80 md:rounded-2xl">
+        <Image className="h-full object-cover" src={img.avatar} alt="avatar" />
+      </div>
+      <div className="my-3 flex flex-col">
+        <div className="text-font-emphasize font-inter text-3xl">
+          Hi!There!👋 <span className="text-font-primary text-2xl">I&apos;m</span>
+        </div>
+        <div className="font-outfit text-font-primary my-8 text-6xl font-semibold">
+          Ryuteakwoo
+        </div>
+        <div className="font-inter text-font-primary text-4xl">
+          JS/TS full-stack developer .
+        </div>
+        <div className="font-inter text-font-secondary mt-3 text-lg">
+          passionate about nextjs, react and node.js.
+        </div>
+        <div className="font-inter text-font-secondary mt-3 text-lg">
+          it&apos;s where I write my work and thoughts about tech and life.
+        </div>
+      </div>
+    </div>
+  );
+};

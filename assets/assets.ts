@@ -16,6 +16,7 @@ import { RiReactjsLine as toolReact } from "react-icons/ri";
 import { RiMiniProgramFill as toolMiniProgram } from "react-icons/ri";
 import { TbBrandNodejs as toolNodejs } from "react-icons/tb";
 
+import { myWork } from '@/types';
 
 const personData = [{
    itemName:'language',
@@ -33,6 +34,68 @@ const personData = [{
   icon:kitBox
 }]
 
+const myWorks: myWork[] = [
+  {
+    title:'readimond',
+    language:'En',
+    description:'ai boosted next generation language learning app',
+    image:'',
+    isPinned:true,
+    keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
+    path:'',
+    github:''
+  },
+  {
+    title:'miniApp:QDU cat',
+    description:'a mini app for QDU students to record their cat status',
+    image:'',
+    isPinned:true,
+    language:'En',
+    keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
+    path:'',
+    github:''
+  },
+  {
+    title:'miniApp:YueJian reading club',
+    description:'a mini app for QDU\'s book lovers to share thier feelings',
+    image:'',
+    isPinned:true,
+    keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
+    language:'En',
+    path:'',
+    github:''
+  },
+  {
+    title:'readimond',
+    language:'Zh',
+    description:'AI驱动的下一代语言学习阅读器',
+    image:'',
+    isPinned:true,
+    keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
+    path:'',
+    github:''
+  },
+  {
+    title:'小程序：青猫图鉴',
+    description:'一个供青岛大学学生记录校园猫咪状态的小程序',
+    image:'',
+    isPinned:true,
+    language:'Zh', 
+    keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
+    path:'',
+    github:''
+  },
+  {
+    title:'小程序：悦见阅见读书会',
+    description:'一个供青岛大学爱书人分享读书感受的小程序',
+    image:'',
+    isPinned:true,
+    language:'Zh',
+    keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
+    path:'',
+    github:''
+  }
+]
 
 const toolData = [{
   icon:toolVscode,
@@ -76,4 +139,4 @@ const img = {
   blur,
 };
 
-export { logo, icon, img, personData, toolData};
+export { logo, icon, img, personData, toolData, myWorks};

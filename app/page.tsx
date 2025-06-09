@@ -1,16 +1,15 @@
-'use client';
-import { Navbar } from './componets/Navbar';
-import { HomeSection } from './componets/HomeSection';
-import { AboutMe } from './componets/AboutMe';
-import { Works } from './componets/Works';
+import { Navbar } from '../componets/Navbar';
+import { HomeSection } from '../componets/HomeSection';
+import { Works } from '../componets/Works';
+import { Posts } from '../componets/Posts';
 
 export default function Home() {
   return (
     <div className="w-full">
       <Navbar />
       <HomeSection />
-      <AboutMe />
       <Works />
+      <Posts />
     </div>
   );
 }
