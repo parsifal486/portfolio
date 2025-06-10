@@ -10,5 +10,11 @@ type myWork = {
     github:string
 };
 
-
-export type { myWork };
+type PostData = {
+    slug: string,
+    title: string,
+    date: string,
+    content: string,
+    description: string,
+}
+export type { myWork, PostData };
