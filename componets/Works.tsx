@@ -23,7 +23,9 @@ export const Works = () => {
               <div className="text-font-primary font-inter group-hover:text-font-emphasize text-2xl transition-colors">
                 {work.title}
               </div>
-              <div>{work.description}</div>
+              <div className="text-font-primary font-inter text-m mt-2 transition-colors">
+                {work.description}
+              </div>
 
               <div className="mt-5 flex flex-row flex-wrap items-center justify-start gap-3">
                 {work.keywords.map((keyword: string) => (
