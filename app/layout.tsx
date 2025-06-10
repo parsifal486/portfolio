@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   title: "Ryuteakwoo's blog",
   description: 'love life, enjoy tech🤟',
   icons: {
-    icon: '/dimond1.svg',
-    apple: '/dimond1.svg',
+    icon: '/diamond.svg',
+    apple: '/diamond.svg',
   },
 };
 

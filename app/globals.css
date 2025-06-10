@@ -42,3 +42,26 @@ body {
   font: #ffffff;
 }
 
+.frostglass {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .frostglass:hover::before,
+  .frostglass:hover::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 10px; 
+    right: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+
+  .frostglass:hover::after {
+    left: auto;
+    right: 10px;
+    transform: skew(8deg) rotate(3deg);
+  }
+}

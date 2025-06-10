@@ -1,4 +1,5 @@
 type myWork = {
+    index:number,
     title:string,
     language:string,
     description:string,

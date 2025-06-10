@@ -5,8 +5,8 @@ import Image from 'next/image';
 export const HomeSection = () => {
   return (
     <div className="mx-auto flex h-screen w-11/12 flex-col items-center justify-center md:flex-row md:justify-start md:pl-40">
-      <div className="margin-5 hover:border-font-emphasize ml-50 h-40 w-40 overflow-hidden rounded-full hover:border-2 md:mr-10 md:ml-0 md:h-110 md:w-80 md:rounded-2xl">
-        <Image className="h-full object-cover" src={img.avatar} alt="avatar" />
+      <div className="margin-5 hover:border-font-emphasize relative ml-50 h-40 w-40 overflow-hidden rounded-full hover:border-2 md:mr-10 md:ml-0 md:h-110 md:w-80 md:rounded-2xl">
+        <Image className="h-full object-cover" fill src={img.avatar} alt="avatar" />
       </div>
       <div className="my-3 flex flex-col">
         <div className="text-font-emphasize font-inter text-3xl">

@@ -1,6 +1,4 @@
-import dimond from './dimond.svg';
-import dimond1 from './dimond1.svg';
-import dimond2 from './dimond2.svg';
+
 import { BiChevronRight as contact } from 'react-icons/bi';
 import { BiMoon as daymode } from 'react-icons/bi';
 import { BiSolidMoon as nightmode } from "react-icons/bi";
@@ -15,8 +13,12 @@ import { VscVscode as toolVscode } from "react-icons/vsc";
 import { RiReactjsLine as toolReact } from "react-icons/ri";
 import { RiMiniProgramFill as toolMiniProgram } from "react-icons/ri";
 import { TbBrandNodejs as toolNodejs } from "react-icons/tb";
+import { FaCode as toolCode } from "react-icons/fa";
+import { GrProjects as project } from "react-icons/gr";
+
 
 import { myWork } from '@/types';
+
 
 const personData = [{
    itemName:'language',
@@ -36,19 +38,21 @@ const personData = [{
 
 const myWorks: myWork[] = [
   {
-    title:'readimond',
+    index:1,
+    title:'readiamond',
     language:'En',
     description:'ai boosted next generation language learning app',
-    image:'',
+    image:'/imgs/readiamond.png',
     isPinned:true,
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
     github:''
   },
   {
+    index:2,
     title:'miniApp:QDU cat',
     description:'a mini app for QDU students to record their cat status',
-    image:'',
+    image:'/imgs/qducat.jpg',
     isPinned:true,
     language:'En',
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
@@ -56,9 +60,10 @@ const myWorks: myWork[] = [
     github:''
   },
   {
+    index:3,
     title:'miniApp:YueJian reading club',
     description:'a mini app for QDU\'s book lovers to share thier feelings',
-    image:'',
+    image:'/imgs/YJWLlogo.jpg',
     isPinned:true,
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
     language:'En',
@@ -66,19 +71,21 @@ const myWorks: myWork[] = [
     github:''
   },
   {
-    title:'readimond',
+    index:4,
+    title:'readiamond',
     language:'Zh',
     description:'AI驱动的下一代语言学习阅读器',
-    image:'',
+    image:'/imgs/readiamond.png',
     isPinned:true,
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
     github:''
   },
   {
+    index:5,
     title:'小程序：青猫图鉴',
     description:'一个供青岛大学学生记录校园猫咪状态的小程序',
-    image:'',
+    image:'/imgs/qducat.jpg',
     isPinned:true,
     language:'Zh', 
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
@@ -86,9 +93,10 @@ const myWorks: myWork[] = [
     github:''
   },
   {
+    index:6,
     title:'小程序：悦见阅见读书会',
     description:'一个供青岛大学爱书人分享读书感受的小程序',
-    image:'',
+    image:'/imgs/YJWLlogo.jpg',
     isPinned:true,
     language:'Zh',
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
@@ -114,13 +122,10 @@ const toolData = [{
   itemName:'Nodejs'
 }]
 
-import avatar from './imgs/avatar.jpg';
-import blur from './imgs/blurEgg.png';
+
 
 const logo = {
-  dimond,
-  dimond1,
-  dimond2,
+  diamond:'/diamond.svg'
 };
 
 const icon = {
@@ -132,11 +137,13 @@ const icon = {
   download,
   arrowRight,
   code,
+  toolCode,
+  project
 };
 
 const img = {
-  avatar,
-  blur,
+  avatar:'/imgs/avatar.jpg',
+  blur:'/imgs/blurEgg.png',
 };
 
 export { logo, icon, img, personData, toolData, myWorks};

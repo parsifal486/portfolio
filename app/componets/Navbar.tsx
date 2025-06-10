@@ -21,7 +21,7 @@ export const Navbar = () => {
   return (
     <nav className="bg-purplespace-100 fixed z-50 flex h-16 w-full flex-row items-center justify-between px-5 py-4 lg:px-8 xl:px-[8%]">
       <a className="flex flex-row items-center gap-2">
-        <Image src={logo.diamond} alt="logo" width={50} height={50} />
+        <Image src={logo.dimond1} alt="logo" width={50} height={50} />
         <div className="text-2xl font-bold">Ryuteakwoo&apos;s</div>
       </a>
 
