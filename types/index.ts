@@ -16,5 +16,6 @@ type PostData = {
     date: string,
     content: string,
     description: string,
+    keywords: string[],
 }
 export type { myWork, PostData };

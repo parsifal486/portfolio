@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -15,17 +14,18 @@
   --font-ovo: var(--font-ovo);
   --font-outfit: var(--font-outfit);
   --font-roboto: var(--font-roboto);
-
+  --font-inter: var(--font-inter);
 
   --color-purplespace-100: #332941;
-  --color-purplespace-200: #3B3486;
-  --color-purplespace-300: #00CAFF;
-  --color-purplespace-400: #00FFDE;
+  --color-purplespace-200: #3b3486;
+  --color-purplespace-300: #00caff;
+  --color-purplespace-400: #00ffde;
 
-  --color-font-primary: #CED6F4;
-  --color-font-secondary: #8A92AD;
-  --color-font-emphasize: #00FFDE;
+  --color-font-primary: #ced6f4;
+  --color-font-secondary: #8a92ad;
+  --color-font-emphasize: #00ffde;
 
+  --color-emphasize-transparent: #00ffde60;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,12 +49,12 @@ body {
 @media (min-width: 768px) {
   .frostglass:hover::before,
   .frostglass:hover::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: -1;
     top: 0;
     bottom: 0;
-    left: 10px; 
+    left: 10px;
     right: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   }

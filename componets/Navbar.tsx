@@ -27,33 +27,34 @@ export const Navbar = () => {
 
       <ul className="font-outfit hidden flex-row items-center justify-between gap-8 rounded-full px-12 py-3 md:flex lg:gap-10">
         <li>
-          <a href="#top">Home</a>
+          <a href="#home">Home</a>
         </li>
         <li>
-          <a href="#product">Product</a>
+          <a href="#works">Works</a>
         </li>
         <li>
           <a href="#post">Post</a>
         </li>
+        {/* todo: add experience section */}
+        {/* <li>
+          <a href="#experience">Experience</a>
+        </li> */}
         <li>
           <a href="#about">About</a>
-        </li>
-        <li>
-          <a href="#contact">Contact</a>
         </li>
       </ul>
 
       <div className="flex flex-row items-center gap-4">
         <button className="cursor-pointer">
-          <icon.daymode size={25} />
+          <icon.language size={25} />
         </button>
 
         <a
           href="#contact"
           className="ml-4 hidden items-center gap-1 rounded-full border border-gray-500 px-3 py-2.5 pl-5 font-bold lg:flex"
         >
-          Contact Now
-          <icon.contact size={20} />
+          résumé
+          <icon.download size={20} />
         </a>
 
         <button className="ml-3 block lg:hidden" onClick={openMenu}>
@@ -71,13 +72,13 @@ export const Navbar = () => {
         </button>
 
         <li>
-          <a href="#top" onClick={closeMenu}>
+          <a href="#home" onClick={closeMenu}>
             Home
           </a>
         </li>
         <li>
-          <a href="#product" onClick={closeMenu}>
-            Product
+          <a href="#works" onClick={closeMenu}>
+            Works
           </a>
         </li>
         <li>
@@ -88,11 +89,6 @@ export const Navbar = () => {
         <li>
           <a href="#about" onClick={closeMenu}>
             About
-          </a>
-        </li>
-        <li>
-          <a href="#contact" onClick={closeMenu}>
-            Contact
           </a>
         </li>
       </ul>

@@ -3,15 +3,12 @@ import path from 'path'
 import matter from 'gray-matter'
 import { PostData } from '@/types'
 
+
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
-export function getAllPostSlugs() {
-  const fileNames = fs.readdirSync(postsDirectory)
-  return fileNames.map(fileName => {
-    return {
-      slug: fileName.replace(/\.md$/, '')
-    }
-  })
+export function getAllPostSlugs(): string[] {
+  const fileNames = fs.readdirSync(postsDirectory);
+  return fileNames.map((fileName) => fileName.replace(/\.md$/, ''));
 }
 
 export function getPostData(slug: string): PostData {
@@ -26,7 +23,8 @@ export function getPostData(slug: string): PostData {
     content,
     title: data.title,
     date: data.date,
-    description: data.description
+    description: data.description,
+    keywords: data.keywords.split(',')
   }
 }
 

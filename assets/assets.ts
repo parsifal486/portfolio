@@ -15,6 +15,7 @@ import { RiMiniProgramFill as toolMiniProgram } from "react-icons/ri";
 import { TbBrandNodejs as toolNodejs } from "react-icons/tb";
 import { FaCode as toolCode } from "react-icons/fa";
 import { GrProjects as project } from "react-icons/gr";
+import { IoLanguage as language } from "react-icons/io5";
 
 
 import { myWork } from '@/types';
@@ -138,7 +139,8 @@ const icon = {
   arrowRight,
   code,
   toolCode,
-  project
+  project,
+  language
 };
 
 const img = {

@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const Works = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div id="works" className="flex flex-col items-center justify-center">
       <div className="flex w-11/12 flex-col items-start justify-center md:ml-50">
         <div className="text-font-emphasize font-inter text-3xl">My Works</div>
         {myWorks.map((work: myWork) => (
