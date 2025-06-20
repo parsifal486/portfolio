@@ -1,0 +1,42 @@
+{
+    "navigation": {
+        "home": "首页",
+        "about": "关于",
+        "posts": "文章",
+        "projects": "项目"
+    },
+    "home": {
+        "greeting": "嗨！👋",
+        "im": "这里是",
+        "name": "刘泽宇(Ryuteakwoo)",
+        "role": "JS/TS 前端开发工程师",
+        "passion": "热衷于 nextjs、react 和 node.js",
+        "description": "我会在这写写我对技术和生活的思考",
+        "getResume": "看看简历？"
+    },
+    "about": {
+        "title": "关于",
+        "getInTouch": "联系方式",
+        "reachOut": "欢迎联系我👏",
+        "collaboration": "项目合作",
+        "discussions": "技术讨论",
+        "opportunities": "工作机会",
+        "inquiries": "一般咨询",
+        "footer": "本网站由Ryuteakwoo设计开发 ❤️"
+    },
+    "posts": {
+        "title": "文章",
+        "readMore": "阅读更多",
+        "publishedOn": "发布于"
+    },
+    "works": {
+        "title": "我的项目",
+        "viewProject": "查看项目",
+        "viewCode": "查看代码"
+    },
+    "projects": {
+        "title": "我的项目",
+        "viewProject": "查看项目",
+        "viewCode": "查看代码"
+    }
+}

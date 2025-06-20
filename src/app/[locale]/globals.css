@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --font-ovo: var(--font-ovo);
+    --font-outfit: var(--font-outfit);
+    --font-roboto: var(--font-roboto);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-ovo: var(--font-ovo);
+    --font-outfit: var(--font-outfit);
+    --font-roboto: var(--font-roboto);
+    --font-inter: var(--font-inter);
+
+    --color-purplespace-100: #332941;
+    --color-purplespace-200: #3b3486;
+    --color-purplespace-300: #00caff;
+    --color-purplespace-400: #00ffde;
+
+    --color-font-primary: #ced6f4;
+    --color-font-secondary: #8a92ad;
+    --color-font-emphasize: #00ffde;
+
+    --color-emphasize-transparent: #00ffde60;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #ffffff;
+        --foreground: #ededed;
+    }
+}
+
+body {
+    background: var(--color-purplespace-100);
+    color: var(--foreground);
+    font-family: var(--font-roboto);
+    font: #ffffff;
+}
+
+.frostglass {
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .frostglass:hover::before,
+    .frostglass:hover::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 10px;
+        right: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .frostglass:hover::after {
+        left: auto;
+        right: 10px;
+        transform: skew(8deg) rotate(3deg);
+    }
+}

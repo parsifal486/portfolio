@@ -1,0 +1,42 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "posts": "Posts",
+    "projects": "Projects"
+  },
+  "home": {
+    "greeting": "Hi! There! 👋",
+    "im": "I'm",
+    "name": "Ryuteakwoo",
+    "role": "JS/TS full-stack developer",
+    "passion": "passionate about nextjs, react and node.js",
+    "description": "it's where I write my work and thoughts about tech and life",
+    "getResume": "get my resume"
+  },
+  "about": {
+    "title": "About",
+    "getInTouch": "Get in Touch",
+    "reachOut": "Feel free to reach out for:",
+    "collaboration": "Project collaboration",
+    "discussions": "Technical discussions",
+    "opportunities": "Job opportunities",
+    "inquiries": "General inquiries",
+    "footer": "this site is design & development by Ryuteakwoo ❤️"
+  },
+  "posts": {
+    "title": "My Posts",
+    "readMore": "Read More",
+    "publishedOn": "Published on"
+  },
+  "works": {
+    "title": "My Works",
+    "viewProject": "View Project",
+    "viewCode": "View Code"
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewProject": "View Project",
+    "viewCode": "View Code"
+  }
+}
