@@ -31,7 +31,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
                         {post.keywords.map((keyword) => (
                             <span
                                 key={keyword}
-                                className="border-font-emphasize text-font-primary font-inter rounded-full border-1 px-3 py-1 text-sm"
+                                className="border-font-emphasize text-font-primary font-inter rounded-full border-2 px-3 py-1 text-sm"
                             >
                                 {keyword.trim()}
                             </span>
@@ -45,7 +45,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
                 {/* 文章内容 */}
                 <div className="rounded-xl p-8">
                     <div
-                        className="prose prose-invert font-inter text-font-primary max-w-none"
+                        className="prose prose-invert font-inter text-font-primary prose-p:leading-relaxed prose-p:my-6 prose-h1:font-outfit prose-h1:text-4xl prose-h1:leading-tight prose-h1:font-bold prose-h1:text-font-emphasize prose-h2:font-roboto prose-h2:text-3xl prose-h2:leading-tight prose-h2:font-semibold prose-h2:text-purplespace-300 prose-h3:font-inter prose-h3:text-2xl prose-h3:leading-tight prose-h3:font-medium prose-h3:text-purplespace-400 prose-h4:font-inter prose-h4:text-xl prose-h4:leading-snug prose-h4:font-medium prose-h4:text-font-primary prose-headings:mt-12 prose-headings:mb-6 prose-li:my-2 prose-li:leading-relaxed prose-ul:my-6 prose-ol:my-6 prose-blockquote:my-8 prose-blockquote:leading-relaxed prose-pre:my-8 prose-pre:p-6 prose-img:my-8 max-w-none"
                         dangerouslySetInnerHTML={{ __html: contentHtml }}
                     />
                 </div>

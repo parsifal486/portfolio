@@ -7,7 +7,9 @@ type myWork = {
     isPinned:boolean,
     keywords:string[],
     path:string,
-    github:string
+    github:string,
+    descriptionPic:string | null,
+    detailUrl:string | null
 };
 
 type PostData = {

@@ -47,7 +47,9 @@ const myWorks: myWork[] = [
     isPinned:true,
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
-    github:''
+    github:'',
+    descriptionPic:null,
+    detailUrl:null
   },
   {
     index:2,
@@ -58,7 +60,9 @@ const myWorks: myWork[] = [
     language:'En',
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
-    github:''
+    github:'',
+    descriptionPic:'/imgs/qmtjdiscription.png',
+    detailUrl:null
   },
   {
     index:3,
@@ -69,7 +73,9 @@ const myWorks: myWork[] = [
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
     language:'En',
     path:'',
-    github:''
+    github:'',
+    descriptionPic:null,
+    detailUrl:null
   },
   {
     index:4,
@@ -80,7 +86,9 @@ const myWorks: myWork[] = [
     isPinned:true,
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
-    github:''
+    github:'',
+    descriptionPic:null,
+    detailUrl:null
   },
   {
     index:5,
@@ -91,7 +99,9 @@ const myWorks: myWork[] = [
     language:'Zh', 
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
-    github:''
+    github:'',
+    descriptionPic:'/imgs/qmtjdiscription.png',
+    detailUrl:null
   },
   {
     index:6,
@@ -102,7 +112,9 @@ const myWorks: myWork[] = [
     language:'Zh',
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
-    github:''
+    github:'',
+    descriptionPic:null,
+    detailUrl:null
   }
 ]
 

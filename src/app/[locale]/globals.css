@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 :root {
     --background: #ffffff;
@@ -25,7 +26,7 @@
     --color-font-secondary: #8a92ad;
     --color-font-emphasize: #00ffde;
 
-    --color-emphasize-transparent: #00ffde60;
+    --color-emphasize-transparent: #00ffde33;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -57,6 +58,7 @@ body {
         left: 10px;
         right: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        border-radius: 8px;
     }
 
     .frostglass:hover::after {
