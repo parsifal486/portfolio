@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getAllPosts } from '@/src/lib/posts';
+import { getAllPosts } from '@/lib/posts';
 import { useTranslations } from 'next-intl';
 
 export const Posts = () => {

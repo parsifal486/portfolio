@@ -1,6 +1,6 @@
-import { getPostData } from '@/src/lib/posts';
+import { getPostData } from '@/lib/posts';
 import React from 'react';
-import { getAllPostSlugs } from '@/src/lib/posts';
+import { getAllPostSlugs } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import { remark } from 'remark';
 import html from 'remark-html';
