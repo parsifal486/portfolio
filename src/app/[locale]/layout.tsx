@@ -30,18 +30,20 @@ const inter = Inter({
     variable: '--font-inter',
 });
 
-export const metadata: Metadata = {
-    title: "Ryuteakwoo's blog",
-    description: 'love life, enjoy tech🤟',
-    icons: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    if (!hasLocale(routing.locales, locale)) {
+        notFound();
+    }
+    return {
+        title: "Ryuteakwoo's blog",
+        description: 'love life, enjoy tech🤟',
+        icons: {
         icon: '/diamond.svg',
         apple: '/diamond.svg',
     },
 };
 
-export function generateStaticParams() {
-    return routing.locales.map((locale) => ({ locale }));
-}
 
 export default async function RootLayout({
     children,
