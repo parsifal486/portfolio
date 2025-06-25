@@ -5,6 +5,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ReactNode } from 'react';
+
 const roboto = Roboto({
     weight: ['400', '700'],
     subsets: ['latin'],
@@ -38,17 +39,8 @@ export const metadata: Metadata = {
     },
 };
 
-type Params = Promise<{ locale: string }>;
-
-export async function generateMetadata({ params }: { params: Params }) {
-    const { locale } = await params;
-    if (!hasLocale(routing.locales, locale)) {
-        notFound();
-    }
-    return {
-        title: "Ryuteakwoo's blog",
-        description: 'love life, enjoy tech🤟',
-    };
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function RootLayout({
@@ -56,7 +48,7 @@ export default async function RootLayout({
     params,
 }: {
     children: ReactNode;
-    params: Params;
+    params: Promise<{ locale: string }>;
 }) {
     // Ensure that the incoming `locale` is valid
     const { locale } = await params;

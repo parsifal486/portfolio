@@ -1,6 +1,6 @@
 import React from 'react';
 import { myWorks } from '@/public/assets';
-import { myWork } from '@/mytypes';
+import { myWork } from '@/src/mytypes';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
 
