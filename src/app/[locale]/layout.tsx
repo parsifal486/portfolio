@@ -39,13 +39,15 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-    params: { locale: string };
+    params: Promise<{
+        locale: string;
+    }>;
     children: ReactNode;
 }
 
-export default function RootLayout({ children, params }: PageProps) {
+export default async function RootLayout({ children, params }: PageProps) {
     // Ensure that the incoming `locale` is valid
-    const { locale } = params;
+    const { locale } = await params;
     if (!hasLocale(routing.locales, locale)) {
         notFound();
     }
