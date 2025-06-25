@@ -18,7 +18,7 @@ import { GrProjects as project } from "react-icons/gr";
 import { IoLanguage as language } from "react-icons/io5";
 
 
-import { myWork } from '@/types';
+import { myWork } from '@/mytypes';
 
 
 const personData = [{

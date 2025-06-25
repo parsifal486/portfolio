@@ -38,11 +38,21 @@ export const metadata: Metadata = {
     },
 };
 
-interface PageProps {
-    children: ReactNode;
-}
+type Params = Promise<{ locale: string }>;
 
-export default function RootLayout({ children }: PageProps) {
+export default async function RootLayout({
+    children,
+    params,
+}: {
+    children: ReactNode;
+    params: Params;
+}) {
+    // Ensure that the incoming `locale` is valid
+    const { locale } = await params;
+    if (!hasLocale(routing.locales, locale)) {
+        notFound();
+    }
+
     return (
         <html lang="en" className="scroll-smooth">
             <body
