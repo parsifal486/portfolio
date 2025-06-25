@@ -40,6 +40,17 @@ export const metadata: Metadata = {
 
 type Params = Promise<{ locale: string }>;
 
+export async function generateMetadata({ params }: { params: Params }) {
+    const { locale } = await params;
+    if (!hasLocale(routing.locales, locale)) {
+        notFound();
+    }
+    return {
+        title: "Ryuteakwoo's blog",
+        description: 'love life, enjoy tech🤟',
+    };
+}
+
 export default async function RootLayout({
     children,
     params,
