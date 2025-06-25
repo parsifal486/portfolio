@@ -4,7 +4,7 @@ import './globals.css';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-
+import { ReactNode } from 'react';
 const roboto = Roboto({
     weight: ['400', '700'],
     subsets: ['latin'],
@@ -38,13 +38,12 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function RootLayout({
-    children,
-    params,
-}: Readonly<{
-    children: React.ReactNode;
+interface PageProps {
     params: { locale: string };
-}>) {
+    children: ReactNode;
+}
+
+export default async function RootLayout({ children, params }: PageProps) {
     // Ensure that the incoming `locale` is valid
     const { locale } = await params;
     if (!hasLocale(routing.locales, locale)) {
