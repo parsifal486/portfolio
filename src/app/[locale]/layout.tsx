@@ -43,9 +43,9 @@ interface PageProps {
     children: ReactNode;
 }
 
-export default async function RootLayout({ children, params }: PageProps) {
+export default function RootLayout({ children, params }: PageProps) {
     // Ensure that the incoming `locale` is valid
-    const { locale } = await params;
+    const { locale } = params;
     if (!hasLocale(routing.locales, locale)) {
         notFound();
     }
