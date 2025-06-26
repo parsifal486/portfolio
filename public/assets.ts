@@ -158,7 +158,8 @@ const icon = {
 const img = {
   avatar:'/imgs/avatar.jpg',
   blur:'/imgs/blurEgg.png',
-  wechatQRcode:'/imgs/wechatQR.jpg'
+  wechatQRcode:'/imgs/wechatQR.jpg',
+  qmtjQRcode:'/imgs/qducat.jpg'
 };
 
 export { logo, icon, img, personData, toolData, myWorks};
