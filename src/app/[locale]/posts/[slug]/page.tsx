@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { allPosts } from 'contentlayer/generated';
 
 export async function generateStaticParams() {
-    const slugs = getAllPostSlugs();
+    const slugs = await getAllPostSlugs();
     const locales = ['en', 'zh'];
 
     return locales.flatMap((locale) =>
