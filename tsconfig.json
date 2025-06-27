@@ -25,7 +25,8 @@
       "@/content/*": ["./content/*"],
       "@/messages/*": ["./messages/*"],
       "@/i18n/*": ["./src/i18n/*"],
-      "@/components/*": ["./src/app/[locale]/components/*"]
+      "@/components/*": ["./src/app/[locale]/components/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

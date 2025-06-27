@@ -12,9 +12,12 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",
+    "contentlayer2": "^0.5.8",
+    "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "i18next": "^25.2.1",
     "next": "15.3.2",
+    "next-contentlayer2": "^0.5.8",
     "next-i18next": "^15.4.2",
     "next-intl": "^4.1.0",
     "postcss": "^8.5.4",
