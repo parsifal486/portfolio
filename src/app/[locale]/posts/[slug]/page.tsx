@@ -5,7 +5,14 @@ import { allPosts } from 'contentlayer/generated';
 
 export async function generateStaticParams() {
     const slugs = getAllPostSlugs();
-    return slugs.map((slug) => ({ slug }));
+    const locales = ['en', 'zh'];
+
+    return locales.flatMap((locale) =>
+        slugs.map((slug) => ({
+            locale,
+            slug,
+        }))
+    );
 }
 
 export default async function PostPage(props: { params: Promise<{ slug: string }> }) {

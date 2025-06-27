@@ -1,12 +1,17 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { getAllPosts } from '@/lib/posts';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
+import type { Post as ContentLayerPost } from 'contentlayer/generated';
 
-export const Posts = () => {
+type PostsProps = {
+    posts: ContentLayerPost[];
+};
+
+export function Posts({ posts }: PostsProps) {
     const locale = useLocale();
-    const posts = getAllPosts();
     const t = useTranslations('posts');
 
     return (
@@ -63,4 +68,4 @@ export const Posts = () => {
             </div>
         </div>
     );
-};
+}
