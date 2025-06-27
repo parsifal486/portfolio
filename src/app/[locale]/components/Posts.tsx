@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import { useTranslations } from 'next-intl';
 
-export const Posts = () => {
+export const Posts = ({ locale }: { locale: string }) => {
     const posts = getAllPosts();
     const t = useTranslations('posts');
-    console.log(posts);
+
     return (
         <div id="post" className="flex flex-col items-center justify-center">
             <div className="flex w-11/12 flex-col items-start justify-center md:ml-50">
@@ -20,7 +20,7 @@ export const Posts = () => {
                             className="frostglass group relative my-10 p-5 transition-all duration-400"
                         >
                             <Link
-                                href={`/posts/${encodeURIComponent(post.slug)}`}
+                                href={`/${locale}/posts/${encodeURIComponent(post.slug)}`}
                                 className="group-hover:text-font-emphasize"
                             >
                                 {post.title}
@@ -50,7 +50,7 @@ export const Posts = () => {
                             </div>
 
                             <Link
-                                href={`/posts/${post.slug}`}
+                                href={`/${locale}/posts/${post.slug}`}
                                 className="text-font-emphasize font-inter mt-4 inline-block hover:underline"
                             >
                                 {t('readMore')}
