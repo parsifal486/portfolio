@@ -48,7 +48,7 @@ const myWorks: myWork[] = [
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
     github:'',
-    descriptionPic:null,
+    descriptionPic:'/imgs/readiamonddiscription.png',
     detailUrl:null
   },
   {
@@ -74,7 +74,7 @@ const myWorks: myWork[] = [
     language:'En',
     path:'',
     github:'',
-    descriptionPic:null,
+    descriptionPic:'/imgs/yjyjdiscription.jpg',
     detailUrl:null
   },
   {
@@ -87,7 +87,7 @@ const myWorks: myWork[] = [
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
     github:'',
-    descriptionPic:null,
+    descriptionPic:'/imgs/readiamonddiscription.png',
     detailUrl:null
   },
   {
@@ -113,7 +113,7 @@ const myWorks: myWork[] = [
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
     path:'',
     github:'',
-    descriptionPic:null,
+    descriptionPic:'/imgs/yjyjdiscription.jpg',
     detailUrl:null
   }
 ]

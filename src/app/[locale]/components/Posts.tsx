@@ -15,11 +15,12 @@ export function Posts({ posts }: PostsProps) {
     const t = useTranslations('posts');
 
     return (
-        <div id="post" className="flex flex-col items-center justify-center">
-            <div className="flex w-11/12 flex-col items-start justify-center md:ml-50">
-                <div className="text-font-emphasize font-inter text-3xl">
-                    {t('title')}
-                </div>
+        <div
+            id="post"
+            className="mx-auto flex w-11/12 flex-col items-start justify-center"
+        >
+            <div className="text-font-emphasize font-inter text-3xl">{t('title')}</div>
+            <div className="flex flex-col items-start justify-center">
                 <ul>
                     {posts.map((post) => (
                         <li

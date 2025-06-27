@@ -6,7 +6,6 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaWeixin } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 
-
 export const About = () => {
     const t = useTranslations('about');
 
@@ -34,9 +33,12 @@ export const About = () => {
     ];
 
     return (
-        <div className="flex flex-col items-center justify-center" id="about">
-            <div className="flex w-11/12 flex-col items-start justify-center md:ml-50">
-                <div className="text-font-emphasize font-inter text-3xl">
+        <div
+            className="mx-auto flex w-11/12 flex-col items-center justify-center"
+            id="about"
+        >
+            <div className="flex w-full flex-col justify-center md:mx-50">
+                <div className="text-font-emphasize font-inter items-start text-3xl">
                     {t('title')}
                 </div>
                 {/* Contact Section */}
