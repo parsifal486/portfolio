@@ -2,6 +2,18 @@ import React from 'react';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import { useTranslations } from 'next-intl';
+import { allPosts } from 'contentlayer/generated';
+
+export async function generateStaticParams() {
+    const locales = ['en', 'zh']
+    
+    return allPosts.flatMap(post => 
+      locales.map(locale => ({
+        locale,
+        slug: post.slug
+      }))
+    )
+  }
 
 export const Posts = ({ locale }: { locale: string }) => {
     const posts = getAllPosts();
