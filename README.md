@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ryuteakwoo's Portfolio
 
-## Getting Started
+<div align="center">
+  <h1>ryuteakwoo.com</h1>
+  <p>
+    My personal portfolio website built with <a href="https://nextjs.org/" target="_blank">Next.js 14</a>, <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, and <a href="https://contentlayer.dev/" target="_blank">Contentlayer</a>.
+  </p>
+</div>
 
-First, run the development server:
+![demo](/public/imgs/portfolio.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠 Tech Stack
+
+- [Next.js 14](https://nextjs.org/) - React framework for production
+- [Tailwind CSS](https://tailwindcss.com/) - For styling
+- [Contentlayer](https://contentlayer.dev/) - Content management
+- [next-intl](https://next-intl-docs.vercel.app/) - Internationalization
+- [TypeScript](https://www.typescriptlang.org/) - For type safety
+- [Framer Motion](https://www.framer.com/motion/) - For animations
+
+## 🌟 Features
+
+- 📱 Responsive Design
+- 🌍 Internationalization (English & Chinese)
+- 📝 MD Blog Posts
+- 🎨 Custom Design System
+- ⚡ Fast Page Loads
+- 🔍 SEO Optimized
+
+## 📂 Project Structure
+
+```
+├── src/
+│   ├── app/           # Next.js 14 app directory
+│   ├── components/    # React components
+│   ├── lib/          # Utility functions
+│   └── styles/       # Global styles
+├── public/           # Static assets
+├── content/         # MDX content
+├── messages/        # i18n translations
+└── tailwind.config.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone this repository
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    git clone https://github.com/parsifal486/portfolio
+    ```
 
-## Learn More
+2. Install dependencies
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Start the development server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm dev
+    ```
 
-## Deploy on Vercel
+4. Build for production
+    ```bash
+    npm build
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is my personal portfolio website. While the code is open source, please give credit if you use it as a reference. The design and implementation took significant effort to create.
+
+## 📫 Contact
+
+- Website: [ryuteakwoo.com](https://ryuteakwoo.com)
+- GitHub: [@yourusername](https://github.com/yourusername)
+- Email: your.email@example.com
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
