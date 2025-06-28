@@ -5,6 +5,9 @@
   <p>
     My personal portfolio website built with <a href="https://nextjs.org/" target="_blank">Next.js 14</a>, <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, and <a href="https://contentlayer.dev/" target="_blank">Contentlayer</a>.
   </p>
+  <p>
+    <a href="README.md">English</a> | <a href="README-zh.md">简体中文</a>
+  </p>
 </div>
 
 ![demo](/public/imgs/portfolio.png)
@@ -72,8 +75,8 @@ This is my personal portfolio website. While the code is open source, please giv
 ## 📫 Contact
 
 - Website: [ryuteakwoo.com](https://ryuteakwoo.com)
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub：[@parsifal486](https://github.com/parsifal486)
+- Email: mrliuzeyou@outlook.com
 
 ## 📄 License
 
