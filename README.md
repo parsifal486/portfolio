@@ -16,7 +16,6 @@
 - [Contentlayer](https://contentlayer.dev/) - Content management
 - [next-intl](https://next-intl-docs.vercel.app/) - Internationalization
 - [TypeScript](https://www.typescriptlang.org/) - For type safety
-- [Framer Motion](https://www.framer.com/motion/) - For animations
 
 ## 🌟 Features
 
