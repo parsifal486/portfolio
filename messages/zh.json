@@ -38,5 +38,8 @@
         "title": "我的项目",
         "viewProject": "查看项目",
         "viewCode": "查看代码"
+    },
+    "qrcode": {
+        "scanToTry": "扫码体验"
     }
 }

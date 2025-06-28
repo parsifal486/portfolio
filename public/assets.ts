@@ -38,6 +38,20 @@ const personData = [{
 }]
 
 const myWorks: myWork[] = [
+
+  {
+    index:0,
+    title:'my portfolio',
+    language:'En',
+    description:'a personal website build with nextjs',
+    image:'/diamond.svg',
+    isPinned:false,
+    keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs'],
+    path:'https://github.com/parsifal486/portfolio',
+    github:'',
+    descriptionPic:'/imgs/portfolio.png',
+    detailUrl:null
+  },
   {
     index:1,
     title:'readiamond',
@@ -45,8 +59,8 @@ const myWorks: myWork[] = [
     description:'ai boosted next generation language learning app',
     image:'/imgs/readiamond.png',
     isPinned:true,
-    keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
-    path:'',
+    keywords:[ 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
+    path:'/staticPage/readiamondPage',
     github:'',
     descriptionPic:'/imgs/readiamonddiscription.png',
     detailUrl:null
@@ -59,7 +73,7 @@ const myWorks: myWork[] = [
     isPinned:true,
     language:'En',
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
-    path:'',
+    path:'/staticPage/qmtjQRcode',
     github:'',
     descriptionPic:'/imgs/qmtjdiscription.png',
     detailUrl:null
@@ -72,46 +86,61 @@ const myWorks: myWork[] = [
     isPinned:true,
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
     language:'En',
-    path:'',
+    path:'/staticPage/yjyjQRcode',
     github:'',
     descriptionPic:'/imgs/yjyjdiscription.jpg',
     detailUrl:null
   },
+
+
   {
     index:4,
+    title:'my portfolio',
+    language:'Zh',
+    description:'使用nextjs构建的个人网站',
+    image:'/diamond.svg',
+    isPinned:false,
+    keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs'],
+    path:'https://github.com/parsifal486/portfolio',
+    github:'',
+    descriptionPic:'/imgs/portfolio.png',
+    detailUrl:null
+  },
+  {
+    index:5,
     title:'readiamond',
     language:'Zh',
     description:'AI驱动的下一代语言学习阅读器',
     image:'/imgs/readiamond.png',
     isPinned:true,
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
-    path:'',
+    path:'/staticPage/readiamondPage',
     github:'',
     descriptionPic:'/imgs/readiamonddiscription.png',
     detailUrl:null
   },
   {
-    index:5,
+    index:6,
     title:'小程序：青猫图鉴',
     description:'一个供青岛大学学生记录校园猫咪状态的小程序',
     image:'/imgs/qducat.jpg',
     isPinned:true,
     language:'Zh', 
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
-    path:'',
+    path:'/staticPage/qmtjQRcode',
     github:'',
     descriptionPic:'/imgs/qmtjdiscription.png',
     detailUrl:null
   },
   {
-    index:6,
+    index:7,
     title:'小程序：悦见阅见读书会',
     description:'一个供青岛大学爱书人分享读书感受的小程序',
     image:'/imgs/YJWLlogo.jpg',
     isPinned:true,
     language:'Zh',
     keywords:['miniapp', 'scss', 'typescript', 'nodejs', 'mongodb'],
-    path:'',
+    path:'/staticPage/yjyjQRcode',
     github:'',
     descriptionPic:'/imgs/yjyjdiscription.jpg',
     detailUrl:null
@@ -159,7 +188,8 @@ const img = {
   avatar:'/imgs/avatar.jpg',
   blur:'/imgs/blurEgg.png',
   wechatQRcode:'/imgs/wechatQR.jpg',
-  qmtjQRcode:'/imgs/qducat.jpg'
+  qmtjQRcode:'/imgs/qmtjQR.jpg',
+  yjyjQRcode:'/imgs/yjyjQR.jpg'
 };
 
 export { logo, icon, img, personData, toolData, myWorks};
