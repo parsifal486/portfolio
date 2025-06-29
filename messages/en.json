@@ -41,5 +41,9 @@
   },
   "qrcode": {
     "scanToTry": "Scan to try"
+  },
+  "readiamond": {
+    "description": "A powerful vocabulary learning tool that helps you learn and remember words through context.",
+    "download": "Download Latest Version"
   }
 }

@@ -60,7 +60,7 @@ const myWorks: myWork[] = [
     image:'/imgs/readiamond.png',
     isPinned:true,
     keywords:[ 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
-    path:'/staticPage/readiamondPage',
+    path:'/staticPage/readiamond',
     github:'',
     descriptionPic:'/imgs/readiamonddiscription.png',
     detailUrl:null
@@ -114,7 +114,7 @@ const myWorks: myWork[] = [
     image:'/imgs/readiamond.png',
     isPinned:true,
     keywords:['nextjs', 'react', 'tailwindcss', 'typescript', 'nodejs', 'mongodb'],
-    path:'/staticPage/readiamondPage',
+    path:'/staticPage/readiamond',
     github:'',
     descriptionPic:'/imgs/readiamonddiscription.png',
     detailUrl:null

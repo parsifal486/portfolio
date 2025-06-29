@@ -41,5 +41,9 @@
     },
     "qrcode": {
         "scanToTry": "扫码体验"
+    },
+    "readiamond": {
+        "description": "一个强大的词汇学习工具，帮助你通过上下文学习和记忆单词。",
+        "download": "下载最新版本"
     }
 }
