@@ -81,10 +81,10 @@ export const Navbar = () => {
                 <LanguageSwitcher />
                 <a
                     href={`/resume_${locale}.pdf`}
-                    download={`刘泽宇简历q.pdf`}
+                    download={`public/刘泽宇简历q.pdf`}
                     className="ml-4 hidden items-center gap-1 rounded-full border border-gray-500 px-3 py-2.5 pl-5 font-bold lg:flex"
                 >
-                    {t('resume')}
+                    resume
                     <icon.download size={20} />
                 </a>
 
