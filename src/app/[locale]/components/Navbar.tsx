@@ -4,9 +4,11 @@ import { logo, icon } from '@/public/assets';
 import Image from 'next/image';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 
 export const Navbar = () => {
     const t = useTranslations('navigation');
+    const locale = useLocale();
     const mobileMenuRef = useRef<HTMLUListElement>(null);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -78,10 +80,11 @@ export const Navbar = () => {
             <div className="flex flex-row items-center gap-4">
                 <LanguageSwitcher />
                 <a
-                    href="#contact"
+                    href={`/resume_${locale}.pdf`}
+                    download={`刘泽宇简历q.pdf`}
                     className="ml-4 hidden items-center gap-1 rounded-full border border-gray-500 px-3 py-2.5 pl-5 font-bold lg:flex"
                 >
-                    résumé
+                    {t('resume')}
                     <icon.download size={20} />
                 </a>
 
