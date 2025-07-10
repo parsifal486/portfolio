@@ -2,5 +2,6 @@
 
 import posts__cssBackdropFilterFrostedGlassMd from './posts__css-backdrop-filter-frosted-glass.md.json' with { type: 'json' }
 import posts__unemployedAfterGraduationHowToEscapeAnxietyMd from './posts__unemployed-after-graduation-how-to-escape-anxiety.md.json' with { type: 'json' }
+import posts__whyDoElectronAppsUseIpcUnderstandingInterProcessCommunicationInElectronMd from './posts__why-do-electron-apps-use-ipc-understanding-inter-process-communication-in-electron.md.json' with { type: 'json' }
 
-export const allPosts = [posts__cssBackdropFilterFrostedGlassMd, posts__unemployedAfterGraduationHowToEscapeAnxietyMd]
+export const allPosts = [posts__cssBackdropFilterFrostedGlassMd, posts__unemployedAfterGraduationHowToEscapeAnxietyMd, posts__whyDoElectronAppsUseIpcUnderstandingInterProcessCommunicationInElectronMd]
