@@ -1,7 +1,7 @@
 ---
 title: ⚛️从零实现一个 React：手写虚拟 DOM、Fiber、Diff 与 Hooks
 description: 深入理解 React 核心原理，通过手写代码逐步实现虚拟 DOM、Fiber 架构、Diff 算法、并发渲染和 Hooks，构建一个完整的迷你 React 框架 Fuact。
-keywords: React, 虚拟DOM, Fiber, Diff算法, Hooks, JSX, 并发渲染, 前端框架, JavaScript
+keywords: React, 虚拟DOM, Fiber
 author: Lau Zeyu
 date: 2025-09-11
 language: zh
@@ -112,6 +112,7 @@ root.render(element)
    ```
 
 现在我们有了最基本的react实现index1如下，即使移除cdn对react的引入，依然可以实现相同的效果
+
 ```js
 //index1.js
 const element = {
@@ -132,7 +133,7 @@ container.appendChild(node);
 
 在以上代码中，我们已经实现了基本的虚拟DOM逻辑，接下来我们来定义自己的函数对以上逻辑进行封装
 
-在代码`const element = <h1>hello,world!!</h1>;`中，在传给浏览器处理之前babel这段代码处理为`const element = React.createElement("h1", null, "Hello, world!");` 再通过React.createElement的构造，最终生成react虚拟DOM对象
+在代码`const element = <h1>hello,world!!</h1>;`中，在传给浏览器处理之前babel将这段代码处理为`const element = React.createElement("h1", null, "Hello, world!");` 再通过React.createElement的构造，最终生成react虚拟DOM对象
 
 在chapetr1 中我们把以上的两步通过直接手写一个JSON对象来进行暂时的改造，要想在我们的React中使用JSX，我们需要创建我们自己的createElement函数
 
@@ -153,7 +154,7 @@ function createElement(type, props, ...children) {
   }
 }
 
-// 叶子节点作为text处理
+// 在 HTML DOM 结构中，文本并不是“HTML 元素 (Element)”，而是属于 Text 节点 (Text node)，它和元素节点 (Element node) 是并列关系。所以需要我们单独处理
 function createTextElement(text) {
   return {
     type: "TEXT_ELEMENT",
@@ -284,7 +285,7 @@ function render(element, container) {
     }
   }
 
-  //递归渲染子节点
+  //递归计算子节点
   element.props.children.forEach((child) => {
     render(child, dom);
   });
@@ -461,7 +462,7 @@ function performFiberOfWork(fiber){
 
 ## Chapter 5 渲染控制
 
-每次我们处理完一个元素虚拟dom节点时，都会向DOM中添加一个新的节点。浏览器可能在我们完成整个树的渲染之前在任意两个节点的渲染工作之间中断我们的工作。在这种情况下，用户将看到一个不完整的UI。而我们是不希望这样发生的。
+每次我们处理完一个元素虚拟dom节点时，都会向DOM中添加一个新的节点。浏览器可能在我们完成整个树的渲染之前在任意两个节点的渲染工作之间中断我们的工作。在这种情况下，用户将看到一个不完整的UI。而我们是不希望这样的情况发生的。
 
 所以我们把`performFiberOfWork()`中的负责把当前节点的dom添加到父dom的以下部分代码
 
@@ -519,7 +520,7 @@ function render(element, container) {
 ```js
 //index2.js
 /** @jsx Fuact.createElement */
-//DOM构造逻辑
+//html元素构造：一般节点
 function createElement(type, props, ...children) {
   return {
     type,
@@ -532,7 +533,7 @@ function createElement(type, props, ...children) {
   };
 }
 
-// 叶子节点作为text处理
+//html元素构造：文本节点
 function createTextElement(text) {
   return {
     type: "TEXT_ELEMENT",
@@ -610,7 +611,7 @@ function performFiberOfWork(fiber){
     fiber.dom = createDom(fiber);
   }
 
-  // 然后创建子fiber
+  // 然后创建子fiber（除dom）
   const elements = fiber.props.children;
   let index = 0; // 索引
   let prevSibling = null; // 上一个兄弟fiber
@@ -631,7 +632,7 @@ function performFiberOfWork(fiber){
     index++;
   }
 
-  // 返回下一个fiber
+  // 返回下一个fiber 有子找子，没子找兄，没兄看叔
   if(fiber.child){
     return fiber.child;
   }
@@ -673,88 +674,87 @@ React依赖于核心数据结构FiberTree，每个fiberTree的节点都包含虚
 Diff算法的核心任务就是计算 **新旧虚拟 DOM 树之间的差异**，决定哪些地方需要真正更新到浏览器的 DOM。而这个对比逻辑会变得复杂，需要单独设计和维护。在之前的小结中，我们提到使用fiberTree的虚拟dom部分信息的构建过程阶段为Reconciliation，这个调解，指的就是新旧虚拟dom的差异计算。所以我们的dom差异计算逻辑应该在performFiberOfWork中创建子fiber的逻辑前进行，根据变化为节点添加effectTag属性，effectTag中保存这个节点的状态（ "PLACEMENT"：需要插入新节点  "UPDATE"：需要更新已有节点的属性 "DELETION"：需要删除节点）。然后在commit 阶段执行相应操作。
 
  ```js
- 
- function performFiberOfWork(fiber){
-   // 先创建当前fiber节点的dom
-   if(!fiber.dom){
-     fiber.dom = createDom(fiber);
-   }
- 
-   // 然后创建子fiber
-   const elements = fiber.props.children;
-   reconcileChildren(fiber, elements);
- 
-   // 返回下一个fiber
-   if(fiber.child){
-     return fiber.child;
-   }
-   let nextFiber = fiber;
-   while (nextFiber) {
-     if (nextFiber.sibling) {
-       return nextFiber.sibling
-     }
-     nextFiber = nextFiber.parent;
-   }
- }
- 
- function reconcileChildren(wipFiber, elements) {
-   let index = 0; // 索引
-   let oldFiber = wipFiber.alternate && wipFiber.alternate.child;//用作比较的旧fiber
-   let prevSibling = null; // 上一个兄弟fiber
-   while(index < elements.length || oldFiber!==null){
-     const element = elements[index];
-     let newFiber = null;
-      
-     const sameType =
-       oldFiber &&
-       element &&
-       element.type == oldFiber.type
- 
-     // 如果类型相同，则更新fiber
-     if (sameType) {
-       newFiber = {
-         type: oldFiber.type,
-         props: element.props,
-         dom: oldFiber.dom,
-         parent: wipFiber,
-         alternate: oldFiber,
-         effectTag: "UPDATE",
-       }
-     }
- 
-     // 如果类型不同，则创建新的fiber
-     if (element && !sameType) {
-       newFiber = {
-         type: element.type,
-         props: element.props,
-         dom: null,
-         parent: wipFiber,
-         alternate: null,
-         effectTag: "PLACEMENT",
-       }
-     }
- 
-     // 如果类型不同，则删除旧的fiber
-     if (oldFiber && !sameType) {
-       oldFiber.effectTag = "DELETION"
-       deletions.push(oldFiber) // 将需要删除的 fiber 节点添加到 deletions 数组中
-     }
- 
-     if(oldFiber){
-       oldFiber = oldFiber.sibling; // 旧节点比较结束，将旧的fiber节点赋值给下一个兄弟fiber节点继续比较
-     }
- 
-     if (index === 0) {
-       wipFiber.child = newFiber //如果是第一个fiber节点，则将新的fiber节点赋值给父fiber节点的child
-     } else if (element) {
-       prevSibling.sibling = newFiber //如果是其他fiber节点，则将新的fiber节点赋值给上一个兄弟fiber节点的sibling
-     }
- 
-     prevSibling = newFiber
-     index++;
-   }
- }
- 
+function performFiberOfWork(fiber){
+  // 先创建当前fiber节点的dom
+  if(!fiber.dom){
+    fiber.dom = createDom(fiber);
+  }
+
+  // 然后创建子fiber
+  const elements = fiber.props.children;
+  reconcileChildren(fiber, elements);
+
+  // 返回下一个fiber
+  if(fiber.child){
+    return fiber.child;
+  }
+  let nextFiber = fiber;
+  while (nextFiber) {
+    if (nextFiber.sibling) {
+      return nextFiber.sibling
+    }
+    nextFiber = nextFiber.parent;
+  }
+}
+
+function reconcileChildren(wipFiber, elements) {
+  let index = 0; // 索引
+  let oldFiber = wipFiber.alternate && wipFiber.alternate.child;//用作比较的旧fiber
+  let prevSibling = null; // 上一个兄弟fiber
+  while(index < elements.length || oldFiber!==null){
+    const element = elements[index];
+    let newFiber = null;
+     
+    const sameType =
+      oldFiber &&
+      element &&
+      element.type == oldFiber.type
+
+    // 如果类型相同，则更新fiber
+    if (sameType) {
+      newFiber = {
+        type: oldFiber.type,
+        props: element.props,
+        dom: oldFiber.dom,
+        parent: wipFiber,
+        alternate: oldFiber,
+        effectTag: "UPDATE",
+      }
+    }
+
+    // 如果类型不同，则创建新的fiber
+    if (element && !sameType) {
+      newFiber = {
+        type: element.type,
+        props: element.props,
+        dom: null,
+        parent: wipFiber,
+        alternate: null,
+        effectTag: "PLACEMENT",
+      }
+    }
+
+    // 如果类型不同，则删除旧的fiber
+    if (oldFiber && !sameType) {
+      oldFiber.effectTag = "DELETION"
+      deletions.push(oldFiber) // 将需要删除的 fiber 节点添加到 deletions 数组中
+    }
+
+    if(oldFiber){
+      oldFiber = oldFiber.sibling; // 旧节点比较结束，将旧的fiber节点赋值给下一个兄弟fiber节点继续比较
+    }
+
+    if (index === 0) {
+      wipFiber.child = newFiber //如果是第一个fiber节点，则将新的fiber节点赋值给父fiber节点的child
+    } else if (element) {
+      prevSibling.sibling = newFiber //如果是其他fiber节点，则将新的fiber节点赋值给上一个兄弟fiber节点的sibling
+    }
+
+    prevSibling = newFiber
+    index++;
+  }
+}
+
  ```
 
 对应在commit中添加effectTag对应的逻辑
@@ -858,6 +858,8 @@ function createDom(fiber) {
 
 performFiberOfWork中，我们目前仅支持dom元素，接下来让我们添加逻辑，支持在构建dom树的过程中添加函数组件
 
+> 在 Fuact.js 的实现里，函数组件被当作特殊类型的节点处理：该节点本身不对应任何真实 DOM（dom === null）。实际渲染的 DOM 来自执行组件函数（fiber.type(fiber.props)）后的返回结果，再由其子节点创建与挂载；这与原生元素和文本节点从 props 直接生成 DOM 的方式不同。
+
 ``` js
 function performFiberOfWork(fiber) {
 	
@@ -866,7 +868,7 @@ function performFiberOfWork(fiber) {
   if(isFunctionComponent){
     updateFunctionComponent(fiber);
   }else{
-    updateHostComponent(fiber);
+    updateHostComponent(fiber); //hostComponet包含
   }
 
   // 返回下一个fiber
@@ -883,8 +885,8 @@ function performFiberOfWork(fiber) {
 }
 
 function updateFunctionComponent(fiber){
-  const children = [fiber.type(fiber.props)];
-  reconcileChildren(fiber, children);
+  const children = [fiber.type(fiber.props)];//fiber.type就是组件函数，我们调用它来获取我们想要的function组件的子html元素
+  reconcileChildren(fiber, children);//将function节点生成的子函数挂载到父节点上，使用reconcileChildren给子节点打上变更标记
 }
 
 function updateHostComponent(fiber){
@@ -904,6 +906,7 @@ function commitWork(fiber) {
     return;
   }
 
+  //这段代码的作用是检查父亲组件是否是没有dom的function组件，若是，则需要子组件越过这个父亲组件，一直想上寻找和挂载到列祖列宗上一个有dom属性的组件上
   let domParentFiber = fiber.parent;
   while(!domParentFiber.dom){
     domParentFiber = domParentFiber.parent;
@@ -952,13 +955,16 @@ Fuact.render(element, container)
 - 每次执行函数组件的时候，都会依次执行里面的 Hook。
 - 所以我们需要在 Fiber 上保存当前组件的状态信息。
 
-```
+```js
 //首先添加useState的定义
 const Fuact = {
   createElement,
   render,
   useState,
 };
+
+let wipFiber = null //当前正在构建的 fiber 节点
+let hookIndex = null //当前正在构建的 fiber 节点的 hook 索引
 ```
 
 在函数组件中初始化 Hook
@@ -966,7 +972,7 @@ const Fuact = {
 ```js
 function updateFunctionComponent(fiber) {
   wipFiber = fiber;
-  hookIndex = 0;
+  hookIndex = 0; //每次计算function组件时都置为0，从头检查所有hook的状态
   wipFiber.hooks = []; // 存储本组件的所有 hook
 
   const children = [fiber.type(fiber.props)];
@@ -985,7 +991,7 @@ function useState(initial) {
     wipFiber.alternate.hooks &&
     wipFiber.alternate.hooks[hookIndex]
 
-  // 创建新的 hook
+  // 如未获取到说明时是hook初始化，使用initial创建新的 hook
   const hook = {
     state: oldHook ? oldHook.state : initial,
     queue: [], // 存储状态更新的队列
@@ -997,7 +1003,7 @@ function useState(initial) {
     hook.state = action(hook.state);
   });
 
-  // setState：入队 action，并触发重新渲染
+  // setState：入队 action，更新nextFiberOfWork，以触发从wipRoot开始的重新渲染
   const setState = action => {
     hook.queue.push(
       typeof action === "function" ? action : () => action
@@ -1013,7 +1019,7 @@ function useState(initial) {
     deletions = [];
   };
 
-  // 保存 hook，并更新索引
+  // 保存 hook，并更新索引，用于检查下一个hook
   wipFiber.hooks.push(hook);
   hookIndex++;
 
@@ -1021,6 +1027,8 @@ function useState(initial) {
 }
 
 ```
+
+此处对于hook的action存储，我们使用队列，是因为一次渲染开始前，可能会有“多个 setState 调用”堆积到同一个状态上，必须按顺序依次应用，才能得到正确结果与符合 React 语义的批量更新。
 
 示例运行
 
