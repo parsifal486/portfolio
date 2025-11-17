@@ -16,6 +16,7 @@ import { TbBrandNodejs as toolNodejs } from "react-icons/tb";
 import { FaCode as toolCode } from "react-icons/fa";
 import { GrProjects as project } from "react-icons/gr";
 import { IoLanguage as language } from "react-icons/io5";
+import { FaGithub as github } from "react-icons/fa";
 
 
 import { myWork } from '@/mytypes';
@@ -181,7 +182,8 @@ const icon = {
   code,
   toolCode,
   project,
-  language
+  language,
+  github
 };
 
 const img = {

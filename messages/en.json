@@ -44,6 +44,25 @@
   },
   "readiamond": {
     "description": "A powerful vocabulary learning tool that helps you learn and remember words through context.",
-    "download": "Download Latest Version"
+    "download": "Download Latest Version",
+    "heroSubtitle": "An intelligent reading companion for language learning",
+    "heroDescription": "Transform your reading into an immersive language learning journey with AI-powered vocabulary building and spaced repetition.",
+    "learningTitle": "Learning in Context",
+    "learningDescription": "Experience natural language acquisition through immersive reading. readiamond highlights familiar words and helps you discover new vocabulary in context.",
+    "learningDetails": "No more isolated word lists. Learn vocabulary the way your brain naturally processes language - through meaningful context and real-world usage.",
+    "fsrsTitle": "Smart Memory",
+    "fsrsDescription": "Powered by the scientifically-proven FSRS algorithm, readiamond optimizes your review schedule for maximum retention.",
+    "fsrsDetails": "Forget cramming. Our spaced repetition system ensures you review words exactly when you're about to forget them, building long-term memory efficiently.",
+    "aiTitle": "Beyond Translation",
+    "aiDescription": "AI understands context, culture, and nuance. Get explanations for idioms, slang, and cultural references that mechanical translation misses.",
+    "aiDetails": "From Shakespeare's metaphors to modern internet slang, AI helps you grasp the true meaning behind the words.",
+    "customTitle": "Your Learning, Your Way",
+    "customDescription": "Personalize every aspect of your learning experience. More languages, AI models, and customization options coming soon.",
+    "customDetails": "Dark mode, custom fonts, keyboard shortcuts, and data privacy - readiamond adapts to how you learn best.",
+    "ctaTitle": "Start Learning Today",
+    "ctaDescription": "Join thousands of language learners who are transforming their reading into vocabulary mastery.",
+    "downloadNow": "Download Now",
+    "viewOnGithub": "View on GitHub",
+    "betaNotice": "We are still in early development and testing phase. Thank you for your tolerance of bugs in the beta version."
   }
 }
