@@ -4,7 +4,7 @@ description: This article explains why Electron applications use IPC (Inter-Proc
 keywords: Electron, IPC
 author: Lau Zeyu
 date: 2025-07-10
-language: en-US
+language: zh
 ---
 
 ### 引言：electron应用为什么要使用IPC？什么是IPC？

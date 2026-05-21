@@ -1,24 +1,20 @@
 import React from 'react';
-import { getAllPostSlugs } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import { allPosts } from 'contentlayer/generated';
 
 export async function generateStaticParams() {
-    const slugs = await getAllPostSlugs();
-    const locales = ['en', 'zh'];
-
-    return locales.flatMap((locale) =>
-        slugs.map((slug) => ({
-            locale,
-            slug,
-        }))
-    );
+    return allPosts.map((post) => ({
+        locale: post.language,
+        slug: post.slug,
+    }));
 }
 
-export default async function PostPage(props: { params: Promise<{ slug: string }> }) {
+export default async function PostPage(props: {
+    params: Promise<{ locale: string; slug: string }>;
+}) {
     const params = await props.params;
     const post = allPosts.find((post) => post.slug === params.slug);
-    if (!post) {
+    if (!post || post.language !== params.locale) {
         return notFound();
     }
 
