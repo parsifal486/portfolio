@@ -3,7 +3,7 @@
 <div align="center">
   <h1>ryuteakwoo.com</h1>
   <p>
-    使用 <a href="https://nextjs.org/" target="_blank">Next.js 14</a>、<a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> 和 <a href="https://contentlayer.dev/" target="_blank">Contentlayer</a> 构建的个人作品集网站。
+    使用 <a href="https://nextjs.org/" target="_blank">Next.js 15</a>、<a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> 和 <a href="https://contentlayer.dev/" target="_blank">Contentlayer</a> 构建的个人作品集网站。
   </p>
   <p>
     <a href="README.md">English</a> | <a href="README-zh.md">简体中文</a>
@@ -14,8 +14,9 @@
 
 ## 🛠 技术栈
 
-- [Next.js 14](https://nextjs.org/) - React 生产级框架
-- [Tailwind CSS](https://tailwindcss.com/) - 样式解决方案
+- [Next.js 15](https://nextjs.org/) - React 生产级框架（App Router）
+- [React 19](https://react.dev/) - UI 库
+- [Tailwind CSS v4](https://tailwindcss.com/) - 样式解决方案
 - [Contentlayer](https://contentlayer.dev/) - 内容管理
 - [next-intl](https://next-intl-docs.vercel.app/) - 国际化支持
 - [TypeScript](https://www.typescriptlang.org/) - 类型安全
@@ -33,14 +34,18 @@
 
 ```
 ├── src/
-│   ├── app/           # Next.js 14 应用目录
-│   ├── components/    # React 组件
-│   ├── lib/          # 工具函数
-│   └── styles/       # 全局样式
-├── public/           # 静态资源
-├── content/         # MD 内容
-├── messages/        # 国际化翻译文件
-└── tailwind.config.js
+│   ├── app/[locale]/      # Next.js App Router（按 locale 划分路由）
+│   │   ├── components/    # React 组件
+│   │   ├── posts/[slug]/  # 博客文章路由
+│   │   ├── staticPage/    # 独立页面
+│   │   └── globals.css    # 全局样式
+│   ├── i18n/              # next-intl 路由与请求配置
+│   ├── lib/               # 工具函数
+│   └── mytypes/           # 共享 TypeScript 类型
+├── public/                # 静态资源
+├── content/posts/         # Markdown 博客文章
+├── messages/              # 国际化翻译文件（en.json、zh.json）
+└── contentlayer.config.ts # Contentlayer 数据模型
 ```
 
 ## 🚀 快速开始
@@ -60,12 +65,12 @@
 3. 启动开发服务器
 
     ```bash
-    npm dev
+    npm run dev
     ```
 
 4. 生产环境构建
     ```bash
-    npm build
+    npm run build
     ```
 
 ## 📝 说明
