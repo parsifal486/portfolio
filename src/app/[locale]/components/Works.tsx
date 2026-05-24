@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { myWorks } from '@/public/assets';
+import { myWorks } from '@/lib/assets';
 import { myWork } from '@/mytypes';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';

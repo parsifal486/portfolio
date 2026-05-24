@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { img } from '@/public/assets';
+import { img } from '@/lib/assets';
 import { useTranslations } from 'next-intl';
 
 export default function QmtjQRcodePage() {

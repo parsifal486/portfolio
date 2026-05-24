@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { img } from '@/public/assets';
+import { img } from '@/lib/assets';
 
 export default function WechatQRcodePage() {
     return (

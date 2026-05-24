@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
-import { logo, icon } from '@/public/assets';
+import { logo, icon } from '@/lib/assets';
 import Image from 'next/image';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useTranslations } from 'next-intl';

@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { icon } from '@/public/assets';
+import { icon } from '@/lib/assets';
 
 export default function ReadiamondPage() {
   const t = useTranslations('readiamond');

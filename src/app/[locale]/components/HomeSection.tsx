@@ -1,5 +1,5 @@
 import React from 'react';
-import { img } from '@/public/assets';
+import { img } from '@/lib/assets';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
