@@ -24,7 +24,10 @@ export const Works = () => {
                         key={work.index}
                         className="frostglass group bg-purplespace-200/30 relative my-10 flex w-full flex-col rounded-xl p-10 transition-all duration-400 md:flex-row md:items-center md:justify-between md:bg-transparent"
                         onClick={() => {
-                            if (work.path) {
+                            if (!work.path) return;
+                            if (/^https?:\/\//.test(work.path)) {
+                                window.open(work.path, '_blank', 'noopener,noreferrer');
+                            } else {
                                 router.push(work.path);
                             }
                         }}
