@@ -2,11 +2,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { logo, icon } from '@/lib/assets';
 import Image from 'next/image';
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { useTranslations } from 'next-intl';
 
 export const Navbar = () => {
-    const t = useTranslations('navigation');
     const mobileMenuRef = useRef<HTMLUListElement>(null);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -15,7 +12,7 @@ export const Navbar = () => {
         const controlNavbar = () => {
             const currentScrollY = window.scrollY;
 
-            // 当向下滚动超过20px时隐藏导航栏
+            // Hide the navbar after scrolling down more than 20px
             if (currentScrollY > lastScrollY && currentScrollY > 20) {
                 setIsVisible(false);
             } else {
@@ -27,7 +24,6 @@ export const Navbar = () => {
 
         window.addEventListener('scroll', controlNavbar);
 
-        // 清理事件监听器
         return () => {
             window.removeEventListener('scroll', controlNavbar);
         };
@@ -58,28 +54,27 @@ export const Navbar = () => {
 
             <ul className="font-outfit hidden flex-row items-center justify-between gap-8 rounded-full px-12 py-3 md:flex lg:gap-10">
                 <li>
-                    <a href="#home">{t('home')}</a>
+                    <a href="#home">Home</a>
                 </li>
                 <li>
-                    <a href="#works">{t('projects')}</a>
+                    <a href="#works">Projects</a>
                 </li>
                 <li>
-                    <a href="#post">{t('posts')}</a>
+                    <a href="#post">Posts</a>
                 </li>
                 {/* todo: add experience section */}
                 {/* <li>
           <a href="#experience">Experience</a>
         </li> */}
                 <li>
-                    <a href="#about">{t('about')}</a>
+                    <a href="#about">About</a>
                 </li>
             </ul>
 
             <div className="flex flex-row items-center gap-4">
-                <LanguageSwitcher />
                 <a
                     href="/resume.pdf"
-                    download="刘泽宇.pdf"
+                    download="Ryuteakwoo.pdf"
                     className="ml-4 hidden items-center gap-1 rounded-full border border-gray-500 px-3 py-2.5 pl-5 font-bold lg:flex"
                 >
                     resume
@@ -105,22 +100,22 @@ export const Navbar = () => {
 
                 <li>
                     <a href="#home" onClick={closeMenu}>
-                        {t('home')}
+                        Home
                     </a>
                 </li>
                 <li>
                     <a href="#works" onClick={closeMenu}>
-                        {t('projects')}
+                        Projects
                     </a>
                 </li>
                 <li>
                     <a href="#post" onClick={closeMenu}>
-                        {t('posts')}
+                        Posts
                     </a>
                 </li>
                 <li>
                     <a href="#about" onClick={closeMenu}>
-                        {t('about')}
+                        About
                     </a>
                 </li>
             </ul>

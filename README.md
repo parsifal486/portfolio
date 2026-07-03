@@ -5,9 +5,6 @@
   <p>
     My personal portfolio website built with <a href="https://nextjs.org/" target="_blank">Next.js 15</a>, <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, and <a href="https://contentlayer.dev/" target="_blank">Contentlayer</a>.
   </p>
-  <p>
-    <a href="README.md">English</a> | <a href="README-zh.md">简体中文</a>
-  </p>
 </div>
 
 ![demo](/public/imgs/portfolio.png)
@@ -18,13 +15,11 @@
 - [React 19](https://react.dev/) - UI library
 - [Tailwind CSS v4](https://tailwindcss.com/) - For styling
 - [Contentlayer](https://contentlayer.dev/) - Content management
-- [next-intl](https://next-intl-docs.vercel.app/) - Internationalization
 - [TypeScript](https://www.typescriptlang.org/) - For type safety
 
 ## 🌟 Features
 
 - 📱 Responsive Design
-- 🌍 Internationalization (English & Chinese)
 - 📝 MD Blog Posts
 - 🎨 Custom Design System
 - ⚡ Fast Page Loads
@@ -34,17 +29,15 @@
 
 ```
 ├── src/
-│   ├── app/[locale]/      # Next.js App Router (locale-scoped routes)
+│   ├── app/               # Next.js App Router
 │   │   ├── components/    # React components
 │   │   ├── posts/[slug]/  # Blog post route
 │   │   ├── staticPage/    # Standalone pages
 │   │   └── globals.css    # Global styles
-│   ├── i18n/              # next-intl routing & request config
 │   ├── lib/               # Utility functions
 │   └── mytypes/           # Shared TypeScript types
 ├── public/                # Static assets
 ├── content/posts/         # Markdown blog posts
-├── messages/              # i18n translations (en.json, zh.json)
 └── contentlayer.config.ts # Contentlayer schema
 ```
 
@@ -80,7 +73,7 @@ This is my personal portfolio website. While the code is open source, please giv
 ## 📫 Contact
 
 - Website: [ryuteakwoo.com](https://ryuteakwoo.com)
-- GitHub：[@parsifal486](https://github.com/parsifal486)
+- GitHub: [@parsifal486](https://github.com/parsifal486)
 - Email: mrliuzeyou@outlook.com
 
 ## 📄 License

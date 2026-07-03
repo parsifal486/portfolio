@@ -1,9 +1,5 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { useLocale } from 'next-intl';
 import type { Post as ContentLayerPost } from 'contentlayer/generated';
 
 type PostsProps = {
@@ -11,15 +7,12 @@ type PostsProps = {
 };
 
 export function Posts({ posts }: PostsProps) {
-    const locale = useLocale();
-    const t = useTranslations('posts');
-
     return (
         <div
             id="post"
             className="mx-auto flex w-11/12 flex-col items-start justify-center"
         >
-            <div className="text-font-emphasize font-inter text-3xl">{t('title')}</div>
+            <div className="text-font-emphasize font-inter text-3xl">My Posts</div>
             <div className="flex flex-col items-start justify-center">
                 <ul>
                     {posts.map((post) => (
@@ -28,7 +21,7 @@ export function Posts({ posts }: PostsProps) {
                             className="frostglass group relative my-10 p-5 transition-all duration-400"
                         >
                             <Link
-                                href={`/${locale}/posts/${encodeURIComponent(post.slug)}`}
+                                href={`/posts/${encodeURIComponent(post.slug)}`}
                                 className="group-hover:text-font-emphasize"
                             >
                                 {post.title}
@@ -53,15 +46,15 @@ export function Posts({ posts }: PostsProps) {
                             </div>
 
                             <div className="text-font-secondary font-inter mt-2 text-sm">
-                                {t('publishedOn')}:{' '}
+                                Published on:{' '}
                                 {post.date.toString().split(' ').slice(0, 4).join(' ')}
                             </div>
 
                             <Link
-                                href={`/${locale}/posts/${post.slug}`}
+                                href={`/posts/${post.slug}`}
                                 className="text-font-emphasize font-inter mt-4 inline-block hover:underline"
                             >
-                                {t('readMore')}
+                                Read More
                             </Link>
                         </li>
                     ))}

@@ -1,14 +1,10 @@
-'use client';
 import React from 'react';
 import { BiLogoGithub } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 import { FaInstagram } from 'react-icons/fa';
 import { FaWeixin } from 'react-icons/fa';
-import { useTranslations } from 'next-intl';
 
 export const About = () => {
-    const t = useTranslations('about');
-
     const contactLinks = [
         {
             icon: <BiLogoGithub size={25} />,
@@ -39,7 +35,7 @@ export const About = () => {
         >
             <div className="flex w-full flex-col justify-center md:mx-50">
                 <div className="text-font-emphasize font-inter items-start text-3xl">
-                    {t('title')}
+                    About
                 </div>
                 {/* Contact Section */}
                 <div
@@ -47,7 +43,7 @@ export const About = () => {
                     id="contact"
                 >
                     <h2 className="text-font-emphasize font-inter mb-6 text-3xl">
-                        {t('getInTouch')}
+                        Get in Touch
                     </h2>
                     <div className="flex flex-wrap gap-6">
                         {contactLinks.map((link) => (
@@ -65,12 +61,12 @@ export const About = () => {
                     </div>
 
                     <div className="text-font-secondary font-inter mt-8">
-                        <p className="mb-2">{t('reachOut')}</p>
+                        <p className="mb-2">Feel free to reach out for:</p>
                         <ul className="list-disc pl-6">
-                            <li>{t('collaboration')}</li>
-                            <li>{t('discussions')}</li>
-                            <li>{t('opportunities')}</li>
-                            <li>{t('inquiries')}</li>
+                            <li>Project collaboration</li>
+                            <li>Technical discussions</li>
+                            <li>Job opportunities</li>
+                            <li>General inquiries</li>
                         </ul>
                     </div>
                 </div>
@@ -78,7 +74,7 @@ export const About = () => {
                 {/* Description Section */}
                 <div className="my-10 w-full rounded-xl p-8 backdrop-blur-sm">
                     <p className="font-inter text-center text-sm text-gray-400">
-                        {t('footer')}
+                        this site is design &amp; development by Ryuteakwoo ❤️
                     </p>
                 </div>
             </div>

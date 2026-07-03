@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next';
-import createNextIntlPlugin from 'next-intl/plugin';
 import { withContentlayer } from 'next-contentlayer2';
 
 // Single source of truth for the readiamond subdomain.
@@ -8,22 +7,14 @@ const READIAMOND_HOST = 'readiamond.ryuteakwoo.com';
 
 const nextConfig: NextConfig = {
   // Host-based subdomain rewrite:
-  // readiamond.ryuteakwoo.com/                → /en/staticPage/readiamond
-  // readiamond.ryuteakwoo.com/{en|zh}         → /{en|zh}/staticPage/readiamond
-  // (next-intl middleware still runs first; on a bare "/" request it
-  //  redirects to "/en", which then matches the second rule below.)
+  // readiamond.ryuteakwoo.com/ → /staticPage/readiamond
   async rewrites() {
     return {
       beforeFiles: [
         {
           source: '/',
           has: [{ type: 'host', value: READIAMOND_HOST }],
-          destination: '/en/staticPage/readiamond',
-        },
-        {
-          source: '/:locale(en|zh)',
-          has: [{ type: 'host', value: READIAMOND_HOST }],
-          destination: '/:locale/staticPage/readiamond',
+          destination: '/staticPage/readiamond',
         },
       ],
       afterFiles: [],
@@ -31,20 +22,35 @@ const nextConfig: NextConfig = {
     };
   },
 
-  // 301 the old portfolio paths to the new subdomain. The host guard
-  // (`missing: host = subdomain`) prevents the redirect from firing on
-  // the subdomain itself, where the rewrite serves the same internal path.
   async redirects() {
     return [
+      // The site is English-only now: 301 the old locale-prefixed URLs
+      // (/en/..., /zh/...) to their root-level equivalents. The destination
+      // is host-relative, so on the readiamond subdomain /en still lands on
+      // "/" which the rewrite above serves. The bare-locale rule must come
+      // first: with `/:path*` alone, a zero-segment match produces an empty
+      // Location header.
       {
-        source: '/:locale(en|zh)/staticPage/readiamond',
+        source: '/:locale(en|zh)',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|zh)/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
+      // 301 the old portfolio path to the subdomain. The host guard
+      // (`missing: host = subdomain`) prevents the redirect from firing on
+      // the subdomain itself, where the rewrite serves the same internal path.
+      {
+        source: '/staticPage/readiamond',
         missing: [{ type: 'host', value: READIAMOND_HOST }],
-        destination: `https://${READIAMOND_HOST}/:locale`,
+        destination: `https://${READIAMOND_HOST}/`,
         permanent: true,
       },
     ];
   },
 };
 
-const withNextIntl = createNextIntlPlugin();
-export default withNextIntl(withContentlayer(nextConfig));
+export default withContentlayer(nextConfig);

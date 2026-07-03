@@ -1,11 +1,8 @@
 import React from 'react';
 import { img } from '@/lib/assets';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 
 export const HomeSection = () => {
-    const t = useTranslations('home');
-
     return (
         <div
             id="home"
@@ -22,25 +19,27 @@ export const HomeSection = () => {
                 <div className="bg-emphasize-transparent transition-ease-in-out absolute top-0 left-0 hidden h-full w-full opacity-0 transition-all duration-300 hover:opacity-100 md:block">
                     <div className="flex h-full w-full items-end justify-center">
                         <div className="text-font-primary border-font-emphasize hover:bg-purplespace-200 mb-10 rounded-xl border-2 px-4 py-2 text-2xl transition-all duration-300">
-                            {t('getResume')}
+                            get my resume
                         </div>
                     </div>
                 </div>
             </div>
             <div className="my-3 flex flex-col">
                 <div className="text-font-emphasize font-inter text-3xl">
-                    {t('greeting')}{' '}
-                    <span className="text-font-primary text-2xl">{t('im')}</span>
+                    Hi! There! 👋{' '}
+                    <span className="text-font-primary text-2xl">I&apos;m</span>
                 </div>
                 <div className="font-outfit text-font-primary my-8 text-6xl font-semibold">
-                    {t('name')}
+                    Ryuteakwoo
                 </div>
-                <div className="font-inter text-font-primary text-4xl">{t('role')}</div>
-                <div className="font-inter text-font-secondary mt-3 text-lg">
-                    {t('passion')}
+                <div className="font-inter text-font-primary text-4xl">
+                    JS/TS full-stack developer
                 </div>
                 <div className="font-inter text-font-secondary mt-3 text-lg">
-                    {t('description')}
+                    passionate about nextjs, react and node.js
+                </div>
+                <div className="font-inter text-font-secondary mt-3 text-lg">
+                    it&apos;s where I write my work and thoughts about tech and life
                 </div>
             </div>
         </div>

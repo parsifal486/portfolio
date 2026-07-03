@@ -18,7 +18,6 @@ export type Post = {
   description: string
   author: string
   keywords: string
-  language: string
   /** Markdown file body */
   body: Markdown
   slug: string

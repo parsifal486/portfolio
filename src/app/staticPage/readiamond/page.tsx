@@ -2,11 +2,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { icon } from '@/lib/assets';
 
 export default function ReadiamondPage() {
-  const t = useTranslations('readiamond');
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -77,10 +75,11 @@ export default function ReadiamondPage() {
                 readiamond
               </h1>
               <p className="text-font-primary text-2xl leading-relaxed md:text-3xl">
-                {t('heroSubtitle')}
+                An intelligent reading companion for language learning
               </p>
               <p className="text-font-secondary max-w-lg text-lg leading-relaxed">
-                {t('heroDescription')}
+                Transform your reading into an immersive language learning journey
+                with AI-powered vocabulary building and spaced repetition.
               </p>
             </div>
 
@@ -141,7 +140,10 @@ export default function ReadiamondPage() {
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 transform">
           <div className="text-font-secondary/80 flex items-center justify-center gap-2 text-sm">
             <div className="bg-purplespace-300 flex h-2 w-2 animate-pulse rounded-full"></div>
-            <p className="text-center leading-relaxed">{t('betaNotice')}</p>
+            <p className="text-center leading-relaxed">
+              We are still in early development and testing phase. Thank you for
+              your tolerance of bugs in the beta version.
+            </p>
           </div>
         </div>
       </section>
@@ -156,13 +158,17 @@ export default function ReadiamondPage() {
             <div className="order-2 space-y-8 lg:order-1">
               <div className="space-y-6">
                 <h2 className="text-font-emphasize text-5xl leading-tight font-bold md:text-6xl">
-                  {t('learningTitle')}
+                  Learning in Context
                 </h2>
                 <p className="text-font-primary text-xl leading-relaxed">
-                  {t('learningDescription')}
+                  Experience natural language acquisition through immersive
+                  reading. readiamond highlights familiar words and helps you
+                  discover new vocabulary in context.
                 </p>
                 <p className="text-font-secondary text-lg leading-relaxed">
-                  {t('learningDetails')}
+                  No more isolated word lists. Learn vocabulary the way your
+                  brain naturally processes language - through meaningful context
+                  and real-world usage.
                 </p>
               </div>
             </div>
@@ -212,13 +218,16 @@ export default function ReadiamondPage() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h2 className="text-font-emphasize text-5xl leading-tight font-bold md:text-6xl">
-                  {t('fsrsTitle')}
+                  Smart Memory
                 </h2>
                 <p className="text-font-primary text-xl leading-relaxed">
-                  {t('fsrsDescription')}
+                  Powered by the scientifically-proven FSRS algorithm, readiamond
+                  optimizes your review schedule for maximum retention.
                 </p>
                 <p className="text-font-secondary text-lg leading-relaxed">
-                  {t('fsrsDetails')}
+                  Forget cramming. Our spaced repetition system ensures you
+                  review words exactly when you&apos;re about to forget them,
+                  building long-term memory efficiently.
                 </p>
               </div>
             </div>
@@ -236,13 +245,16 @@ export default function ReadiamondPage() {
             <div className="order-2 space-y-8 lg:order-1">
               <div className="space-y-6">
                 <h2 className="text-font-emphasize text-5xl leading-tight font-bold md:text-6xl">
-                  {t('aiTitle')}
+                  Beyond Translation
                 </h2>
                 <p className="text-font-primary text-xl leading-relaxed">
-                  {t('aiDescription')}
+                  AI understands context, culture, and nuance. Get explanations
+                  for idioms, slang, and cultural references that mechanical
+                  translation misses.
                 </p>
                 <p className="text-font-secondary text-lg leading-relaxed">
-                  {t('aiDetails')}
+                  From Shakespeare&apos;s metaphors to modern internet slang, AI
+                  helps you grasp the true meaning behind the words.
                 </p>
               </div>
             </div>
@@ -297,13 +309,15 @@ export default function ReadiamondPage() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h2 className="text-font-emphasize text-5xl leading-tight font-bold md:text-6xl">
-                  {t('customTitle')}
+                  Your Learning, Your Way
                 </h2>
                 <p className="text-font-primary text-xl leading-relaxed">
-                  {t('customDescription')}
+                  Personalize every aspect of your learning experience. More
+                  languages, AI models, and customization options coming soon.
                 </p>
                 <p className="text-font-secondary text-lg leading-relaxed">
-                  {t('customDetails')}
+                  Dark mode, custom fonts, keyboard shortcuts, and data privacy -
+                  readiamond adapts to how you learn best.
                 </p>
               </div>
             </div>
@@ -319,10 +333,11 @@ export default function ReadiamondPage() {
         <div className="mx-auto max-w-4xl space-y-12">
           <div className="space-y-8">
             <h2 className="text-font-emphasize text-5xl leading-tight font-bold md:text-7xl">
-              {t('ctaTitle')}
+              Start Learning Today
             </h2>
             <p className="text-font-primary mx-auto max-w-2xl text-xl leading-relaxed md:text-2xl">
-              {t('ctaDescription')}
+              Join thousands of language learners who are transforming their
+              reading into vocabulary mastery.
             </p>
           </div>
 
@@ -334,7 +349,7 @@ export default function ReadiamondPage() {
               className="group bg-purplespace-200 hover:bg-purplespace-300 hover:shadow-purplespace-300/25 flex transform items-center justify-center gap-4 rounded-full px-10 py-5 text-xl font-semibold text-white shadow-2xl transition-all hover:scale-110"
             >
               <icon.download size={28} className="group-hover:animate-bounce" />
-              {t('downloadNow')}
+              Download Now
             </a>
             <a
               href="https://github.com/parsifal486/readiamond"
@@ -346,7 +361,7 @@ export default function ReadiamondPage() {
                 size={28}
                 className="transition-transform group-hover:rotate-12"
               />
-              {t('viewOnGithub')}
+              View on GitHub
             </a>
           </div>
 

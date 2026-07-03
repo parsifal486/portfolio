@@ -5,11 +5,8 @@ import { Posts } from './components/Posts';
 import { About } from '@/components/About';
 import { getAllPosts } from '@/lib/posts';
 
-export default async function Home(props: {
-    params: Promise<{ locale: 'en' | 'zh' }>;
-}) {
-    const { locale } = await props.params;
-    const posts = await getAllPosts(locale);
+export default async function Home() {
+    const posts = await getAllPosts();
 
     return (
         <div className="w-full">

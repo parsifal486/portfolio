@@ -4,7 +4,6 @@ description: Feeling lost after graduation? This article offers a new perspectiv
 keywords: life, post-graduation anxiety, job search stress, life as a story, personal growth, mindset shift, graduate struggles
 author: Lau Zeyu
 date: 2025-06-09
-language: en
 ---
 
 # Unemployed After Graduation? How to Escape the Anxiety

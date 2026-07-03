@@ -9,7 +9,6 @@ const Post = defineDocumentType(() => ({
     description: { type: 'string', required: true },
     author: { type: 'string', required: true },
     keywords: { type: 'string', required: true },
-    language: { type: 'string', required: true, options: ['en', 'zh'] },
   },
   computedFields: {
     slug: {

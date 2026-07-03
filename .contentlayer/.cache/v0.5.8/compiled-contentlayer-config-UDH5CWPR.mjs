@@ -9,8 +9,7 @@ var Post = defineDocumentType(() => ({
     date: { type: "date", required: true },
     description: { type: "string", required: true },
     author: { type: "string", required: true },
-    keywords: { type: "string", required: true },
-    language: { type: "string", required: true, options: ["en", "zh"] }
+    keywords: { type: "string", required: true }
   },
   computedFields: {
     slug: {
@@ -37,4 +36,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-BEYC3WJE.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-UDH5CWPR.mjs.map
