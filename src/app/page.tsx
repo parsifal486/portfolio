@@ -1,17 +1,12 @@
 import { HomeSection } from '@/components/HomeSection';
-import { Works } from '@/components/Works';
-import { Posts } from './components/Posts';
+import { Menu } from '@/components/Menu';
 import { About } from '@/components/About';
-import { getAllPosts } from '@/lib/posts';
 
-export default async function Home() {
-    const posts = await getAllPosts();
-
+export default function Home() {
     return (
         <div className="w-full">
             <HomeSection />
-            <Works />
-            <Posts posts={posts} />
+            <Menu />
             <About />
         </div>
     );

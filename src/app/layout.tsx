@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import { ReactNode } from 'react';
-import { ThemeToggle } from './components/ThemeToggle';
 
 const inter = Inter({
     weight: ['400', '500', '700'],
@@ -37,9 +36,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
             <body className={`${inter.variable} ${hubano.variable} antialiased`}>
-                <div className="fixed top-3 right-4 z-50">
-                    <ThemeToggle />
-                </div>
                 {children}
             </body>
         </html>

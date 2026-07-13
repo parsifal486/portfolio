@@ -10,53 +10,43 @@ type ContactLink = {
     label: string;
     url: string;
     download?: boolean;
+    tooltip?: string;
 };
 
 export const About = () => {
     const contactLinks: ContactLink[] = [
         {
-            icon: <BiLogoGithub size={18} />,
+            icon: <BiLogoGithub size={20} />,
             label: 'GitHub',
             url: 'https://github.com/parsifal486',
         },
         {
-            icon: <MdEmail size={18} />,
+            icon: <MdEmail size={20} />,
             label: 'Email',
             url: 'mailto:mrliuzeyou@outlook.com',
         },
         {
-            icon: <FaInstagram size={18} />,
+            icon: <FaInstagram size={20} />,
             label: 'Instagram',
             url: 'https://www.instagram.com/ryuteakwoo/',
         },
         {
-            icon: <FaWeixin size={18} />,
+            icon: <FaWeixin size={20} />,
             label: 'WeChat',
             url: '/staticPage/wechatQRcode',
         },
         {
-            icon: <FiFileText size={18} />,
+            icon: <FiFileText size={20} />,
             label: 'Résumé',
             url: '/resume.pdf',
             download: true,
+            tooltip: 'October 2025 version',
         },
     ];
 
     return (
-        <section
-            id="about"
-            className="border-hairline mx-auto w-full max-w-2xl border-t px-6 py-16"
-        >
-            <h2 className="text-font-secondary text-xs font-medium tracking-widest uppercase">
-                Get in touch
-            </h2>
-
-            <p className="text-font-secondary mt-8 leading-relaxed">
-                Open to project collaboration, technical discussions, and job
-                opportunities. Feel free to reach out.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+        <section id="about" className="mx-auto w-full max-w-2xl px-6 py-16">
+            <div className="flex flex-wrap items-center gap-5">
                 {contactLinks.map((link) => (
                     <a
                         key={link.label}
@@ -64,17 +54,16 @@ export const About = () => {
                         {...(link.download
                             ? { download: 'Ryuteakwoo.pdf' }
                             : { target: '_blank', rel: 'noopener noreferrer' })}
-                        className="text-font-primary hover:text-font-emphasize inline-flex items-center gap-2 text-sm transition-colors"
+                        aria-label={link.label}
+                        className="group text-font-secondary hover:text-font-emphasize relative transition-colors"
                     >
                         {link.icon}
-                        {link.label}
+                        <span className="bg-foreground text-background pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-md px-2 py-1 text-xs whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
+                            {link.tooltip ?? link.label}
+                        </span>
                     </a>
                 ))}
             </div>
-
-            <p className="text-font-secondary mt-16 text-xs">
-                Designed &amp; built by Ryuteakwoo
-            </p>
         </section>
     );
 };

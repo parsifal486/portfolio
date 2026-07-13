@@ -1,23 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
 import { format } from 'date-fns';
-import type { Post as ContentLayerPost } from 'contentlayer/generated';
+import { getAllPosts } from '@/lib/posts';
 
-type PostsProps = {
-    posts: ContentLayerPost[];
+export const metadata = {
+    title: 'Adventure of my life · Ryuteakwoo',
 };
 
-export function Posts({ posts }: PostsProps) {
-    return (
-        <section
-            id="post"
-            className="border-hairline mx-auto w-full max-w-2xl border-t px-6 py-16"
-        >
-            <h2 className="text-font-secondary text-xs font-medium tracking-widest uppercase">
-                Writing
-            </h2>
+export default async function LifePage() {
+    const posts = await getAllPosts();
 
-            <ul className="mt-8 space-y-6">
+    return (
+        <section className="mx-auto w-full max-w-2xl px-6 pt-24 pb-24">
+            <Link
+                href="/"
+                className="text-font-secondary hover:text-font-emphasize text-sm transition-colors"
+            >
+                ← Back
+            </Link>
+
+            <h1 className="mt-8 text-3xl font-semibold tracking-tight">
+                Adventure of my life
+            </h1>
+
+            <ul className="mt-10 space-y-4">
                 {posts.map((post) => (
                     <li key={post.slug}>
                         <Link
