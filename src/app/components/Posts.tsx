@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { format } from 'date-fns';
 import type { Post as ContentLayerPost } from 'contentlayer/generated';
 
 type PostsProps = {
@@ -8,58 +9,36 @@ type PostsProps = {
 
 export function Posts({ posts }: PostsProps) {
     return (
-        <div
+        <section
             id="post"
-            className="mx-auto flex w-11/12 flex-col items-start justify-center"
+            className="border-hairline mx-auto w-full max-w-2xl border-t px-6 py-16"
         >
-            <div className="text-font-emphasize font-inter text-3xl">My Posts</div>
-            <div className="flex flex-col items-start justify-center">
-                <ul>
-                    {posts.map((post) => (
-                        <li
-                            key={post.slug}
-                            className="frostglass group relative my-10 p-5 transition-all duration-400"
+            <h2 className="text-font-secondary text-xs font-medium tracking-widest uppercase">
+                Writing
+            </h2>
+
+            <ul className="mt-8 space-y-6">
+                {posts.map((post) => (
+                    <li key={post.slug}>
+                        <Link
+                            href={`/posts/${encodeURIComponent(post.slug)}`}
+                            className="group block"
                         >
-                            <Link
-                                href={`/posts/${encodeURIComponent(post.slug)}`}
-                                className="group-hover:text-font-emphasize"
-                            >
-                                {post.title}
-                            </Link>
-
-                            <div className="text-font-primary font-inter text-m mt-2 transition-colors">
+                            <div className="flex items-baseline justify-between gap-4">
+                                <span className="text-font-emphasize font-medium underline-offset-4 group-hover:underline">
+                                    {post.title}
+                                </span>
+                                <time className="text-font-secondary shrink-0 text-sm">
+                                    {format(new Date(post.date), 'MMM yyyy')}
+                                </time>
+                            </div>
+                            <p className="text-font-secondary mt-1 text-sm leading-relaxed">
                                 {post.description}
-                            </div>
-
-                            <div className="mt-5 flex flex-row flex-wrap items-center justify-start gap-3">
-                                {post.keywords
-                                    .split(',')
-                                    .slice(0, 3)
-                                    .map((keyword) => (
-                                        <span
-                                            key={keyword}
-                                            className="border-font-emphasize text-font-primary font-inter rounded-full border-1 px-3 py-1 text-sm"
-                                        >
-                                            {keyword}
-                                        </span>
-                                    ))}
-                            </div>
-
-                            <div className="text-font-secondary font-inter mt-2 text-sm">
-                                Published on:{' '}
-                                {post.date.toString().split(' ').slice(0, 4).join(' ')}
-                            </div>
-
-                            <Link
-                                href={`/posts/${post.slug}`}
-                                className="text-font-emphasize font-inter mt-4 inline-block hover:underline"
-                            >
-                                Read More
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
+                            </p>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </section>
     );
 }

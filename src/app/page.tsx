@@ -1,4 +1,3 @@
-import { Navbar } from '@/components/Navbar';
 import { HomeSection } from '@/components/HomeSection';
 import { Works } from '@/components/Works';
 import { Posts } from './components/Posts';
@@ -10,9 +9,7 @@ export default async function Home() {
 
     return (
         <div className="w-full">
-            <Navbar />
             <HomeSection />
-
             <Works />
             <Posts posts={posts} />
             <About />

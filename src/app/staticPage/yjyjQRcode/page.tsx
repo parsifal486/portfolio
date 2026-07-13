@@ -1,19 +1,12 @@
-import Image from 'next/image';
 import { img } from '@/lib/assets';
+import { QrPage } from '../QrPage';
 
 export default function YjyjQRcodePage() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center gap-4">
-            <div className="rounded-xl p-4">
-                <Image
-                    src={img.yjyjQRcode}
-                    alt="WeChat QR Code"
-                    width={300}
-                    height={300}
-                    className="rounded-xl"
-                />
-            </div>
-            <div className="text-font-emphasize font-inter text-xl">Scan to try</div>
-        </div>
+        <QrPage
+            src={img.yjyjQRcode}
+            alt="YueJian reading club mini app QR code"
+            caption="Scan to try"
+        />
     );
 }

@@ -1,74 +1,125 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
+/* ---------------------------------------------------------------------------
+   Theme foundation — near-monochrome (black & white), dual light/dark.
+   Semantic variables switch by theme; @theme maps existing utility names
+   (font-primary / font-emphasize / purplespace-*) onto them so the whole
+   site re-skins without per-component edits.
+--------------------------------------------------------------------------- */
+
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --font-ovo: var(--font-ovo);
-    --font-outfit: var(--font-outfit);
-    --font-roboto: var(--font-roboto);
+    color-scheme: light dark;
+
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --fg-muted: #5c5c5c;
+    --fg-strong: #000000;
+    --surface: #f2f2f2;
+    --fill-subtle: rgba(0, 0, 0, 0.05);
+    --hairline: rgba(0, 0, 0, 0.1);
 }
 
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-ovo: var(--font-ovo);
-    --font-outfit: var(--font-outfit);
-    --font-roboto: var(--font-roboto);
-    --font-inter: var(--font-inter);
-
-    --color-purplespace-100: #332941;
-    --color-purplespace-200: #3b3486;
-    --color-purplespace-300: #00caff;
-    --color-purplespace-400: #00ffde;
-
-    --color-font-primary: #ced6f4;
-    --color-font-secondary: #8a92ad;
-    --color-font-emphasize: #00ffde;
-
-    --color-emphasize-transparent: #00ffde33;
-}
-
+/* Follow the OS when the user hasn't explicitly chosen a theme */
 @media (prefers-color-scheme: dark) {
-    :root {
-        --background: #ffffff;
-        --foreground: #ededed;
+    :root:not([data-theme='light']) {
+        --bg: #0e0e0e;
+        --fg: #e8e8e8;
+        --fg-muted: #9a9a9a;
+        --fg-strong: #ffffff;
+        --surface: #1a1a1a;
+        --fill-subtle: rgba(255, 255, 255, 0.09);
+        --hairline: rgba(255, 255, 255, 0.12);
     }
 }
 
+/* Explicit user choice wins over the OS preference */
+:root[data-theme='light'] {
+    color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+    color-scheme: dark;
+    --bg: #0e0e0e;
+    --fg: #e8e8e8;
+    --fg-muted: #9a9a9a;
+    --fg-strong: #ffffff;
+    --surface: #1a1a1a;
+    --fill-subtle: rgba(255, 255, 255, 0.09);
+    --hairline: rgba(255, 255, 255, 0.12);
+}
+
+@theme inline {
+    /* Single typeface (Inter) as placeholder — swap --font-inter later.
+       Legacy font-outfit / font-roboto utilities now resolve to it too. */
+    --font-sans: var(--font-inter);
+    --font-inter: var(--font-inter);
+    --font-outfit: var(--font-inter);
+    --font-roboto: var(--font-inter);
+    --font-hubano: var(--font-hubano);
+
+    --color-background: var(--bg);
+    --color-foreground: var(--fg);
+    --color-hairline: var(--hairline);
+    --color-surface: var(--surface);
+
+    /* Text: primary = soft fg, emphasize = pure (headings/hover), secondary = muted */
+    --color-font-primary: var(--fg);
+    --color-font-secondary: var(--fg-muted);
+    --color-font-emphasize: var(--fg-strong);
+    --color-emphasize-transparent: var(--fill-subtle);
+
+    /* Legacy "purplespace" names remapped to neutral surfaces */
+    --color-purplespace-100: var(--bg);
+    --color-purplespace-200: var(--surface);
+    --color-purplespace-300: var(--fg);
+    --color-purplespace-400: var(--fg-strong);
+}
+
 body {
-    background: var(--color-purplespace-100);
-    color: var(--foreground);
-    font-family: var(--font-roboto);
-    font: #ffffff;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    transition:
+        color 0.15s ease,
+        opacity 0.15s ease;
+}
+
+/* Long-form article typography — adapts to light/dark via the theme tokens,
+   so no prose-invert is needed. */
+.prose {
+    --tw-prose-body: var(--fg);
+    --tw-prose-headings: var(--fg-strong);
+    --tw-prose-lead: var(--fg-muted);
+    --tw-prose-links: var(--fg-strong);
+    --tw-prose-bold: var(--fg-strong);
+    --tw-prose-counters: var(--fg-muted);
+    --tw-prose-bullets: var(--fg-muted);
+    --tw-prose-hr: var(--hairline);
+    --tw-prose-quotes: var(--fg-muted);
+    --tw-prose-quote-borders: var(--hairline);
+    --tw-prose-captions: var(--fg-muted);
+    --tw-prose-code: var(--fg-strong);
+    --tw-prose-pre-code: var(--fg);
+    --tw-prose-pre-bg: var(--surface);
+    --tw-prose-th-borders: var(--hairline);
+    --tw-prose-td-borders: var(--hairline);
 }
 
 .frostglass {
     position: relative;
 }
 
-@media (min-width: 768px) {
-    .frostglass:hover::before,
-    .frostglass:hover::after {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        bottom: 0;
-        left: 10px;
-        right: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-        border-radius: 8px;
-    }
-
-    .frostglass:hover::after {
-        left: auto;
-        right: 10px;
-        transform: skew(8deg) rotate(3deg);
-    }
-}
-
-/* Custom animations for readiamond page */
+/* ---------------------------------------------------------------------------
+   readiamond page animations (untouched — subpage refactor is a later phase)
+--------------------------------------------------------------------------- */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -84,12 +135,6 @@ body {
     animation: fadeInUp 1s ease-out forwards;
 }
 
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Custom hover effects */
 .group:hover .group-hover\:animate-bounce {
     animation: bounce 1s infinite;
 }

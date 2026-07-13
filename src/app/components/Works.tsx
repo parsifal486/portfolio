@@ -1,90 +1,59 @@
-'use client';
 import React from 'react';
+import Link from 'next/link';
 import { myWorks } from '@/lib/assets';
 import { myWork } from '@/mytypes';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+
+const isExternal = (path: string) => /^https?:\/\//.test(path);
 
 export const Works = () => {
-    const router = useRouter();
     return (
-        <div
+        <section
             id="works"
-            className="mx-auto flex w-11/12 flex-col items-start justify-center"
+            className="border-hairline mx-auto w-full max-w-2xl border-t px-6 py-16"
         >
-            <div className="text-font-emphasize font-inter text-3xl">Projects</div>
-            <div className="flex w-full flex-col items-center justify-center">
-                {myWorks.map((work: myWork) => (
-                    <div
-                        key={work.index}
-                        className="frostglass group bg-purplespace-200/30 relative my-10 flex w-full flex-col rounded-xl p-10 transition-all duration-400 md:flex-row md:items-center md:justify-between md:bg-transparent"
-                        onClick={() => {
-                            if (!work.path) return;
-                            if (/^https?:\/\//.test(work.path)) {
-                                window.open(work.path, '_blank', 'noopener,noreferrer');
-                            } else {
-                                router.push(work.path);
-                            }
-                        }}
-                    >
-                        <div className="flex flex-row items-center justify-center">
-                            <div className="relative h-20 w-20 rounded-xl md:h-30 md:w-30">
-                                <Image
-                                    src={work.image}
-                                    alt={work.title}
-                                    fill
-                                    className="rounded-xl"
-                                    sizes="100%"
-                                />
-                            </div>
-                            <div className="ml-10 flex-1">
-                                <div className="text-font-primary font-inter group-hover:text-font-emphasize text-2xl transition-colors">
+            <h2 className="text-font-secondary text-xs font-medium tracking-widest uppercase">
+                Projects
+            </h2>
+
+            <ul className="mt-8 space-y-6">
+                {myWorks.map((work: myWork) => {
+                    const external = isExternal(work.path);
+                    const content = (
+                        <>
+                            <div className="flex items-baseline justify-between gap-4">
+                                <span className="text-font-emphasize font-medium underline-offset-4 group-hover:underline">
                                     {work.title}
-                                </div>
-                                <div className="text-font-primary font-inter text-m mt-2 transition-colors">
-                                    {work.description}
-                                </div>
-
-                                <div className="mt-5 hidden flex-row flex-wrap items-center justify-start gap-3 md:flex">
-                                    {work.keywords.slice(0, 3).map((keyword: string) => (
-                                        <div
-                                            key={keyword}
-                                            className="bg-emphasize-transparent text-font-primary font-inter rounded-full px-3 py-1 text-sm"
-                                        >
-                                            {keyword}
-                                        </div>
-                                    ))}
-                                </div>
+                                </span>
+                                <span className="text-font-secondary shrink-0 text-sm">
+                                    {external ? '↗' : '→'}
+                                </span>
                             </div>
-                        </div>
+                            <p className="text-font-secondary mt-1 text-sm leading-relaxed">
+                                {work.description}
+                            </p>
+                        </>
+                    );
 
-                        <div className="mt-5 flex flex-row flex-wrap items-center justify-start gap-3 md:hidden">
-                            {work.keywords.slice(0, 3).map((keyword: string) => (
-                                <div
-                                    key={keyword}
-                                    className="bg-emphasize-transparent text-font-primary font-inter rounded-full px-3 py-1 text-sm"
+                    return (
+                        <li key={work.index}>
+                            {external ? (
+                                <a
+                                    href={work.path}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group block"
                                 >
-                                    {keyword}
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="mt-3 h-40 w-70 rounded-xl md:h-90 md:w-140">
-                            {work.descriptionPic && (
-                                <div className="relative h-40 w-70 md:h-90 md:w-140">
-                                    <Image
-                                        src={work.descriptionPic}
-                                        alt={work.title}
-                                        fill
-                                        className="rounded-xl"
-                                        sizes="100%"
-                                    />
-                                </div>
+                                    {content}
+                                </a>
+                            ) : (
+                                <Link href={work.path} className="group block">
+                                    {content}
+                                </Link>
                             )}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
+                        </li>
+                    );
+                })}
+            </ul>
+        </section>
     );
 };

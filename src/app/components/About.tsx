@@ -3,81 +3,78 @@ import { BiLogoGithub } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
 import { FaInstagram } from 'react-icons/fa';
 import { FaWeixin } from 'react-icons/fa';
+import { FiFileText } from 'react-icons/fi';
+
+type ContactLink = {
+    icon: React.ReactNode;
+    label: string;
+    url: string;
+    download?: boolean;
+};
 
 export const About = () => {
-    const contactLinks = [
+    const contactLinks: ContactLink[] = [
         {
-            icon: <BiLogoGithub size={25} />,
+            icon: <BiLogoGithub size={18} />,
             label: 'GitHub',
             url: 'https://github.com/parsifal486',
         },
         {
-            icon: <MdEmail size={25} />,
+            icon: <MdEmail size={18} />,
             label: 'Email',
             url: 'mailto:mrliuzeyou@outlook.com',
         },
         {
-            icon: <FaInstagram size={25} />,
+            icon: <FaInstagram size={18} />,
             label: 'Instagram',
             url: 'https://www.instagram.com/ryuteakwoo/',
         },
         {
-            icon: <FaWeixin size={25} />,
-            label: 'wechat',
+            icon: <FaWeixin size={18} />,
+            label: 'WeChat',
             url: '/staticPage/wechatQRcode',
+        },
+        {
+            icon: <FiFileText size={18} />,
+            label: 'Résumé',
+            url: '/resume.pdf',
+            download: true,
         },
     ];
 
     return (
-        <div
-            className="mx-auto flex w-11/12 flex-col items-center justify-center"
+        <section
             id="about"
+            className="border-hairline mx-auto w-full max-w-2xl border-t px-6 py-16"
         >
-            <div className="flex w-full flex-col justify-center md:mx-50">
-                <div className="text-font-emphasize font-inter items-start text-3xl">
-                    About
-                </div>
-                {/* Contact Section */}
-                <div
-                    className="bg-purplespace-200/30 my-10 w-full rounded-xl p-8 backdrop-blur-sm"
-                    id="contact"
-                >
-                    <h2 className="text-font-emphasize font-inter mb-6 text-3xl">
-                        Get in Touch
-                    </h2>
-                    <div className="flex flex-wrap gap-6">
-                        {contactLinks.map((link) => (
-                            <a
-                                key={link.label}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-font-primary hover:text-font-emphasize flex items-center gap-2 transition-colors duration-300"
-                            >
-                                {link.icon}
-                                <span className="font-inter">{link.label}</span>
-                            </a>
-                        ))}
-                    </div>
+            <h2 className="text-font-secondary text-xs font-medium tracking-widest uppercase">
+                Get in touch
+            </h2>
 
-                    <div className="text-font-secondary font-inter mt-8">
-                        <p className="mb-2">Feel free to reach out for:</p>
-                        <ul className="list-disc pl-6">
-                            <li>Project collaboration</li>
-                            <li>Technical discussions</li>
-                            <li>Job opportunities</li>
-                            <li>General inquiries</li>
-                        </ul>
-                    </div>
-                </div>
+            <p className="text-font-secondary mt-8 leading-relaxed">
+                Open to project collaboration, technical discussions, and job
+                opportunities. Feel free to reach out.
+            </p>
 
-                {/* Description Section */}
-                <div className="my-10 w-full rounded-xl p-8 backdrop-blur-sm">
-                    <p className="font-inter text-center text-sm text-gray-400">
-                        this site is design &amp; development by Ryuteakwoo ❤️
-                    </p>
-                </div>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                {contactLinks.map((link) => (
+                    <a
+                        key={link.label}
+                        href={link.url}
+                        {...(link.download
+                            ? { download: 'Ryuteakwoo.pdf' }
+                            : { target: '_blank', rel: 'noopener noreferrer' })}
+                        className="text-font-primary hover:text-font-emphasize inline-flex items-center gap-2 text-sm transition-colors"
+                    >
+                        {link.icon}
+                        {link.label}
+                    </a>
+                ))}
             </div>
-        </div>
+
+            <p className="text-font-secondary mt-16 text-xs">
+                Designed &amp; built by Ryuteakwoo
+            </p>
+        </section>
     );
 };
