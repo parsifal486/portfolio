@@ -1,8 +1,17 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, IM_Fell_English } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import { ReactNode } from 'react';
+
+// Body typeface — antique old-style serif; Inter is the fallback.
+const imFell = IM_Fell_English({
+    weight: '400',
+    style: ['normal', 'italic'],
+    subsets: ['latin'],
+    variable: '--font-imfell',
+    display: 'swap',
+});
 
 const inter = Inter({
     weight: ['400', '500', '700'],
@@ -35,7 +44,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
-            <body className={`${inter.variable} ${hubano.variable} antialiased`}>
+            <body
+                className={`${imFell.variable} ${inter.variable} ${hubano.variable} antialiased`}
+            >
                 {children}
             </body>
         </html>

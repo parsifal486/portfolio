@@ -50,9 +50,9 @@
 }
 
 @theme inline {
-    /* Single typeface (Inter) as placeholder — swap --font-inter later.
-       Legacy font-outfit / font-roboto utilities now resolve to it too. */
-    --font-sans: var(--font-inter);
+    /* Body: IM Fell (antique serif) with Inter as the fallback.
+       Legacy font-outfit / font-roboto utilities resolve to Inter. */
+    --font-sans: var(--font-imfell), var(--font-inter), serif;
     --font-inter: var(--font-inter);
     --font-outfit: var(--font-inter);
     --font-roboto: var(--font-inter);
@@ -79,7 +79,9 @@
 body {
     background: var(--bg);
     color: var(--fg);
-    font-family: var(--font-sans);
+    font-family: var(--font-imfell), var(--font-inter), serif;
+    /* IM Fell ships a single weight — don't let the browser fake bold. */
+    font-synthesis-weight: none;
 }
 
 html {
