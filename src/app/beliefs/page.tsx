@@ -27,6 +27,13 @@ const beliefs = [
             'Criticism is good feedback — if you can take it unemotionally.',
         ],
     },
+    {
+        title: 'There is no such thing as failure.',
+        points: [
+            'There are only results that point us in the right direction.',
+            "Don't dwell on how the result makes you feel. Face it, learn from it, and take action.",
+        ],
+    },
 ];
 
 export default function BeliefsPage() {
