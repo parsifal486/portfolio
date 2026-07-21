@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import { format } from 'date-fns';
-import { getAllPosts } from '@/lib/posts';
+import { getPostsByCategory } from '@/lib/posts';
+import { PostList } from '@/components/PostList';
 
 export const metadata = {
     title: 'Adventure of my life · Ryuteakwoo',
 };
 
 export default async function LifePage() {
-    const posts = await getAllPosts();
+    const posts = await getPostsByCategory('life');
 
     return (
         <section className="mx-auto w-full max-w-2xl px-6 pt-24 pb-24">
@@ -23,28 +23,11 @@ export default async function LifePage() {
                 Adventure of my life
             </h1>
 
-            <ul className="mt-10 space-y-4">
-                {posts.map((post) => (
-                    <li key={post.slug}>
-                        <Link
-                            href={`/posts/${encodeURIComponent(post.slug)}`}
-                            className="group block"
-                        >
-                            <div className="flex items-baseline justify-between gap-4">
-                                <span className="text-font-emphasize font-medium underline-offset-4 group-hover:underline">
-                                    {post.title}
-                                </span>
-                                <time className="text-font-secondary shrink-0 text-sm">
-                                    {format(new Date(post.date), 'MMM yyyy')}
-                                </time>
-                            </div>
-                            <p className="text-font-secondary mt-1 text-sm leading-relaxed">
-                                {post.description}
-                            </p>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {posts.length > 0 ? (
+                <PostList posts={posts} className="mt-10" />
+            ) : (
+                <p className="text-font-secondary mt-10">Nothing here yet.</p>
+            )}
         </section>
     );
 }

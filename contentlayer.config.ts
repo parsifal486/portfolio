@@ -19,6 +19,11 @@ const Post = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => `/posts/${doc._raw.sourceFileName.replace(/\.md$/, '')}`,
     },
+    // Category is derived from the folder under content/posts (life | craft | archive).
+    category: {
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFileDir.split('/')[1] ?? 'life',
+    },
   },
 }));
 

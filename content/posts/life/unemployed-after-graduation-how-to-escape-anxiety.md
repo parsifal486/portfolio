@@ -2,7 +2,7 @@
 title: Unemployed After Graduation? How to Escape the Anxiety
 description: Feeling lost after graduation? This article offers a new perspective—treat your life like a storybook full of ups and downs. You're not failing; you're storytelling.
 keywords: life, post-graduation anxiety, job search stress, life as a story, personal growth, mindset shift, graduate struggles
-author: Lau Zeyu
+author: ryuteakwoo
 date: 2025-06-09
 ---
 

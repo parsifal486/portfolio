@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { format } from 'date-fns';
-import { getAllPosts } from '@/lib/posts';
+import { getPostsByCategory } from '@/lib/posts';
+import { PostList } from '@/components/PostList';
 import { myWorks } from '@/lib/assets';
 import { myWork } from '@/mytypes';
 
@@ -12,7 +12,8 @@ export const metadata = {
 const isExternal = (path: string) => /^https?:\/\//.test(path);
 
 export default async function ArchivePage() {
-    const posts = await getAllPosts();
+    // Archive holds its own bucket of writing, not a mirror of every post.
+    const posts = await getPostsByCategory('archive');
     // Readiamond has its own home; list everything else here.
     const projects = myWorks.filter((work) => work.title !== 'readiamond');
 
@@ -70,31 +71,14 @@ export default async function ArchivePage() {
                 })}
             </ul>
 
-            <h2 className="text-font-secondary mt-12 text-xs font-medium tracking-widest uppercase">
-                Writing
-            </h2>
-            <ul className="mt-6 space-y-4">
-                {posts.map((post) => (
-                    <li key={post.slug}>
-                        <Link
-                            href={`/posts/${encodeURIComponent(post.slug)}`}
-                            className="group block"
-                        >
-                            <div className="flex items-baseline justify-between gap-4">
-                                <span className="text-font-emphasize font-medium underline-offset-4 group-hover:underline">
-                                    {post.title}
-                                </span>
-                                <time className="text-font-secondary shrink-0 text-sm">
-                                    {format(new Date(post.date), 'MMM yyyy')}
-                                </time>
-                            </div>
-                            <p className="text-font-secondary mt-1 text-sm leading-relaxed">
-                                {post.description}
-                            </p>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {posts.length > 0 && (
+                <>
+                    <h2 className="text-font-secondary mt-12 text-xs font-medium tracking-widest uppercase">
+                        Writing
+                    </h2>
+                    <PostList posts={posts} className="mt-6" />
+                </>
+            )}
         </section>
     );
 }

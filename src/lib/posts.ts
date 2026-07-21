@@ -18,3 +18,7 @@ export async function getAllPosts(): Promise<Post[]> {
     }
   })
 }
+
+export async function getPostsByCategory(category: string): Promise<Post[]> {
+  return (await getAllPosts()).filter((post) => post.category === category)
+}
