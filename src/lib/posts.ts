@@ -5,12 +5,14 @@ export async function getAllPostSlugs(): Promise<string[]> {
   return Array.from(new Set(allPosts.map((post) => post.slug)))
 }
 
-export async function getPostData(slug: string) {
-  return allPosts.find((post) => post.slug === slug)
+export async function getPostData(slug: string, locale: string = 'en') {
+  return allPosts.find((post) => post.slug === slug && post.locale === locale)
 }
 
+// Listings only surface English posts; `.zh.md` versions are reachable
+// solely via their /posts/<slug>/zh URL.
 export async function getAllPosts(): Promise<Post[]> {
-  return [...allPosts].sort((a, b) => {
+  return allPosts.filter((post) => post.locale !== 'zh').sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {
