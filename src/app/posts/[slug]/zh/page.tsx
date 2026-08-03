@@ -6,18 +6,18 @@ import { allPosts } from 'contentlayer/generated';
 
 export async function generateStaticParams() {
     return allPosts
-        .filter((post) => post.locale === 'en')
+        .filter((post) => post.locale === 'zh')
         .map((post) => ({
             slug: post.slug,
         }));
 }
 
-export default async function PostPage(props: {
+export default async function ZhPostPage(props: {
     params: Promise<{ slug: string }>;
 }) {
     const params = await props.params;
     const post = allPosts.find(
-        (post) => post.slug === params.slug && post.locale === 'en'
+        (post) => post.slug === params.slug && post.locale === 'zh'
     );
     if (!post) {
         return notFound();
@@ -31,7 +31,7 @@ export default async function PostPage(props: {
     return (
         <article className="mx-auto w-full max-w-2xl px-6 pt-24 pb-24">
             <Link
-                href="/#post"
+                href={`/posts/${post.slug}`}
                 className="text-font-secondary hover:text-font-emphasize text-sm transition-colors"
             >
                 ← Back
@@ -41,7 +41,7 @@ export default async function PostPage(props: {
                 {post.title}
             </h1>
             <p className="text-font-secondary mt-3 text-sm">
-                {format(new Date(post.date), 'MMMM d, yyyy')}
+                {format(new Date(post.date), 'yyyy年M月d日')}
                 {keywords.length > 0 && <> · {keywords.join(', ')}</>}
             </p>
 

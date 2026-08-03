@@ -11,13 +11,22 @@ const Post = defineDocumentType(() => ({
     keywords: { type: 'string', required: true },
   },
   computedFields: {
+    // A `<slug>.zh.md` file is the hidden Chinese version of `<slug>.md`,
+    // served at /posts/<slug>/zh and excluded from all listings.
+    locale: {
+      type: 'string',
+      resolve: (doc) => (doc._raw.sourceFileName.endsWith('.zh.md') ? 'zh' : 'en'),
+    },
     slug: {
       type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md$/, ''),
+      resolve: (doc) => doc._raw.sourceFileName.replace(/(\.zh)?\.md$/, ''),
     },
     url: {
       type: 'string',
-      resolve: (doc) => `/posts/${doc._raw.sourceFileName.replace(/\.md$/, '')}`,
+      resolve: (doc) => {
+        const slug = doc._raw.sourceFileName.replace(/(\.zh)?\.md$/, '');
+        return doc._raw.sourceFileName.endsWith('.zh.md') ? `/posts/${slug}/zh` : `/posts/${slug}`;
+      },
     },
     // Category is derived from the folder under content/posts (life | craft | archive).
     category: {
