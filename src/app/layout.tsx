@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, IM_Fell_English } from 'next/font/google';
+import { Inter, IM_Fell_English, IM_Fell_DW_Pica } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import { ReactNode } from 'react';
@@ -10,6 +10,15 @@ const imFell = IM_Fell_English({
     style: ['normal', 'italic'],
     subsets: ['latin'],
     variable: '--font-imfell',
+    display: 'swap',
+});
+
+// Post headings — a heavier Fell cut, so titles read above the body copy
+// without a bold weight (IM Fell ships 400 only).
+const imFellDWPica = IM_Fell_DW_Pica({
+    weight: '400',
+    subsets: ['latin'],
+    variable: '--font-dwpica',
     display: 'swap',
 });
 
@@ -45,7 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
             <body
-                className={`${imFell.variable} ${inter.variable} ${hubano.variable} antialiased`}
+                className={`${imFell.variable} ${imFellDWPica.variable} ${inter.variable} ${hubano.variable} antialiased`}
             >
                 {children}
             </body>

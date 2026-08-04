@@ -57,6 +57,10 @@
     --font-outfit: var(--font-inter);
     --font-roboto: var(--font-inter);
     --font-hubano: var(--font-hubano);
+    /* Post titles: DW Pica is a heavier Fell cut than the English used for body,
+       which is how titles get weight — IM Fell ships 400 only. English then serif
+       mirror the body chain, so glyphs DW Pica lacks fall back the same way. */
+    --font-title: var(--font-dwpica), var(--font-imfell), serif;
 
     --color-background: var(--bg);
     --color-foreground: var(--fg);
@@ -97,6 +101,13 @@ a {
 /* Long-form article typography — adapts to light/dark via the theme tokens,
    so no prose-invert is needed. */
 .prose {
+    /* Body copy runs on the platform UI stack: IM Fell's small x-height and
+       antique cut are hard going at length, and CJK fell through to Songti —
+       this puts English on SF Pro / Segoe UI and Chinese on PingFang / YaHei. */
+    font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC',
+        'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+
     --tw-prose-body: var(--fg);
     --tw-prose-headings: var(--fg-strong);
     --tw-prose-lead: var(--fg-muted);
@@ -114,6 +125,12 @@ a {
     --tw-prose-th-borders: var(--hairline);
     --tw-prose-td-borders: var(--hairline);
 }
+
+/* In-article headings inherit the sans stack rather than going back to Fell.
+   Every IM Fell cut is weight 400, and with a Fell face heading the stack the
+   CJK fallback resolves at 400 too — headings came out as light as body copy.
+   The sans stack has real bold in both scripts, so structure reads at a glance.
+   Hierarchy is: DW Pica post title (serif) → bold sans headings → sans body. */
 
 .frostglass {
     position: relative;

@@ -37,7 +37,7 @@ export default async function ZhPostPage(props: {
                 ← Back
             </Link>
 
-            <h1 className="mt-8 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h1 className="font-title mt-8 text-3xl tracking-tight sm:text-4xl">
                 {post.title}
             </h1>
             <p className="text-font-secondary mt-3 text-sm">
