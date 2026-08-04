@@ -25,9 +25,6 @@ export const PostList = ({ posts, className = '' }: PostListProps) => {
                                 {format(new Date(post.date), 'MMM yyyy')}
                             </time>
                         </div>
-                        <p className="text-font-secondary mt-1 text-sm leading-relaxed">
-                            {post.description}
-                        </p>
                     </Link>
                 </li>
             ))}
