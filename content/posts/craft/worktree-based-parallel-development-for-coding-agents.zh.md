@@ -49,6 +49,8 @@ alias cldf="claude --dangerously-skip-permissions --chrome --model fable"
 
 它会自动根据当前任务名称创建并进入对应的 worktree，同时完成基础的分支初始化和命名规范约定。其中，`full` 参数是工作模式的开关，用来规定这个任务是需要全量验证的复杂任务，还是简单验证即可的轻型任务。
 
+> 本文提到的整套命令 —— `/wt`、`/wt-done`、`/wt-review`，连同 bootstrap 脚本和 session 上下文 hook —— 已打包成开源的 Claude Code plugin：[claude-wt](https://github.com/parsifal486/claude-wt)。`/plugin marketplace add parsifal486/claude-wt` 即可安装，装好后敲 `/wt:help`，它会在 session 里结合现场状态讲解整套工作流。（plugin 中的命令带命名空间：`/wt:new`、`/wt:done`、`/wt:review`。）
+
 我没有对 ExitWorktree 进行封装，因为这个 tool 是给 non-interactive 工作模式下的 agent 使用的，或者用于单个 session 中多次切换 worktree 的场景。
 
 ### 声明式配置层（子代理 frontmatter）/ 状态追踪层（会话与 transcript）/ 并发安全层（锁与清理）
@@ -81,3 +83,4 @@ Claude Code 在这里写了两个 hook，用来处理仓库的版本管理工具
 ## 参考文章
 
 * [Run parallel sessions with worktrees](https://code.claude.com/docs/en/worktrees)
+* [claude-wt —— 本文工作流的 Claude Code plugin 实现](https://github.com/parsifal486/claude-wt)

@@ -49,6 +49,8 @@ I built my own `wt` command on top of EnterWorktree:
 
 It creates and enters the corresponding worktree based on the task name, and also handles basic branch initialization and naming conventions. The `full` parameter is a mode switch: it marks whether the task needs full validation, or whether it is a lighter task that only needs simple checks.
 
+> The full command set in this post — `/wt`, `/wt-done`, `/wt-review`, plus the bootstrap script and the session-context hook — is packaged as an open-source Claude Code plugin: [claude-wt](https://github.com/parsifal486/claude-wt). Install it with `/plugin marketplace add parsifal486/claude-wt`, then type `/wt:help` and it explains the whole workflow right inside your session. (Plugin commands are namespaced: `/wt:new`, `/wt:done`, `/wt:review`.)
+
 I did not wrap ExitWorktree, because that tool is mainly useful for agents running in non-interactive mode, or for workflows where a single session needs to switch between multiple worktrees repeatedly.
 
 ### Declarative Config, State Tracking, and Concurrency Safety
@@ -81,3 +83,4 @@ The workflow is built around several design choices:
 ## References
 
 * [Run parallel sessions with worktrees](https://code.claude.com/docs/en/worktrees)
+* [claude-wt — this workflow packaged as a Claude Code plugin](https://github.com/parsifal486/claude-wt)
