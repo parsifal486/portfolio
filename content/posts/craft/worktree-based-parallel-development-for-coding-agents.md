@@ -41,15 +41,15 @@ alias cldf="claude --dangerously-skip-permissions --chrome --model fable"
 
 **EnterWorktree** lets Claude move the current conversation into a worktree. **ExitWorktree** does the reverse: it lets Claude leave the worktree it is currently in.
 
-I built my own `wt` command on top of EnterWorktree:
+I built my own `/wt:new` command on top of EnterWorktree:
 
 ```shell
-/wt [full] <worktree name> <worktree task detailed description>
+/wt:new [full] <worktree task detailed description>
 ```
 
-It creates and enters the corresponding worktree based on the task name, and also handles basic branch initialization and naming conventions. The `full` parameter is a mode switch: it marks whether the task needs full validation, or whether it is a lighter task that only needs simple checks.
+It derives a kebab-case worktree name from the task description, creates and enters the corresponding worktree, and also handles basic branch initialization and naming conventions. The `full` parameter is a mode switch: it marks whether the task needs full validation, or whether it is a lighter task that only needs simple checks.
 
-> The full command set in this post — `/wt`, `/wt-done`, `/wt-review`, plus the bootstrap script and the session-context hook — is packaged as an open-source Claude Code plugin: [claude-wt](https://github.com/parsifal486/claude-wt). Install it with `/plugin marketplace add parsifal486/claude-wt`, then type `/wt:help` and it explains the whole workflow right inside your session. (Plugin commands are namespaced: `/wt:new`, `/wt:done`, `/wt:review`.)
+> The full command set in this post — `/wt:new`, `/wt:done`, `/wt:review`, plus the bootstrap script and the session-context hook — is packaged as an open-source Claude Code plugin: [claude-wt](https://github.com/parsifal486/claude-wt). Install it with `/plugin marketplace add parsifal486/claude-wt`, then type `/wt:help` and it explains the whole workflow right inside your session.
 
 I did not wrap ExitWorktree, because that tool is mainly useful for agents running in non-interactive mode, or for workflows where a single session needs to switch between multiple worktrees repeatedly.
 
@@ -69,10 +69,10 @@ Claude Code provides two hooks here for repositories that do not use Git as thei
 
 ## The Actual Workflow
 
-1. Main session: inspects remote and local repository state and tracks branch status. After implementations from different branches are merged into the working branch, the main session runs `/wt-review` against the acceptance document to review the work, check the overall state, fill gaps, validate, and clean up.
-2. N parallel child sessions: each session starts with a model chosen according to the task. The session uses `/wt` to create a worktree and enter its working directory. If the task is in `full` mode, it generates a detailed contract file at `.claude/wt/<name>.md`, including acceptance criteria and rejection records. It then calls `wt-up.sh` to allocate a port, so the code can be adjusted interactively during development.
-3. After finishing the task, the child session runs `/wt-done`: it runs `pnpm` checks and smoke tests, then adds acceptance criteria for `/wt-review` to use later (only in `full` mode). It then merges, writes back to the contract, and marks the task as "pending acceptance."
-4. After the N child sessions finish, I can group the work by module and run `/wt-review` in the main session for acceptance and cross-feature integration checks. Tasks that fail acceptance can be sent back for rework, with the child session continuing development.
+1. Main session: inspects remote and local repository state and tracks branch status. After implementations from different branches are merged into the working branch, the main session runs `/wt:review` against the acceptance document to review the work, check the overall state, fill gaps, validate, and clean up.
+2. N parallel child sessions: each session starts with a model chosen according to the task. The session uses `/wt:new` to create a worktree and enter its working directory. If the task is in `full` mode, it generates a detailed contract file at `.claude/wt/<name>.md`, including acceptance criteria and rejection records. It then calls `wt-up.sh` to allocate a port, so the code can be adjusted interactively during development.
+3. After finishing the task, the child session runs `/wt:done`: it runs `pnpm` checks and smoke tests, then adds acceptance criteria for `/wt:review` to use later (only in `full` mode). It then merges, writes back to the contract, and marks the task as "pending acceptance."
+4. After the N child sessions finish, I can group the work by module and run `/wt:review` in the main session for acceptance and cross-feature integration checks. Tasks that fail acceptance can be sent back for rework, with the child session continuing development.
 
 The workflow is built around several design choices:
 

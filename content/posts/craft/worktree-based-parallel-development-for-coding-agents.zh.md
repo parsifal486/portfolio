@@ -41,15 +41,15 @@ alias cldf="claude --dangerously-skip-permissions --chrome --model fable"
 
 **EnterWorktree** 的作用是让 Claude 把当前会话“移动”进一个 worktree。**ExitWorktree** 则是反方向的工具，用来让 Claude 从当前所在的 worktree 中退出。
 
-首先，我基于 EnterWorktree 封装了一个自己的命令 `wt`：
+首先，我基于 EnterWorktree 封装了一个自己的命令 `/wt:new`：
 
 ```shell
-/wt [full] <worktree name> <worktree task detailed description>
+/wt:new [full] <worktree task detailed description>
 ```
 
-它会自动根据当前任务名称创建并进入对应的 worktree，同时完成基础的分支初始化和命名规范约定。其中，`full` 参数是工作模式的开关，用来规定这个任务是需要全量验证的复杂任务，还是简单验证即可的轻型任务。
+它会根据任务描述自拟一个 kebab-case 的 worktree 名，创建并进入对应的 worktree，同时完成基础的分支初始化和命名规范约定。其中，`full` 参数是工作模式的开关，用来规定这个任务是需要全量验证的复杂任务，还是简单验证即可的轻型任务。
 
-> 本文提到的整套命令 —— `/wt`、`/wt-done`、`/wt-review`，连同 bootstrap 脚本和 session 上下文 hook —— 已打包成开源的 Claude Code plugin：[claude-wt](https://github.com/parsifal486/claude-wt)。`/plugin marketplace add parsifal486/claude-wt` 即可安装，装好后敲 `/wt:help`，它会在 session 里结合现场状态讲解整套工作流。（plugin 中的命令带命名空间：`/wt:new`、`/wt:done`、`/wt:review`。）
+> 本文提到的整套命令 —— `/wt:new`、`/wt:done`、`/wt:review`，连同 bootstrap 脚本和 session 上下文 hook —— 已打包成开源的 Claude Code plugin：[claude-wt](https://github.com/parsifal486/claude-wt)。`/plugin marketplace add parsifal486/claude-wt` 即可安装，装好后敲 `/wt:help`，它会在 session 里结合现场状态讲解整套工作流。
 
 我没有对 ExitWorktree 进行封装，因为这个 tool 是给 non-interactive 工作模式下的 agent 使用的，或者用于单个 session 中多次切换 worktree 的场景。
 
@@ -69,10 +69,10 @@ Claude Code 在这里写了两个 hook，用来处理仓库的版本管理工具
 
 ## 实际 Workflow
 
-1. 主 session：负责 inspect，跟进远端、本地仓库状态以及各分支状况；在各分支实现合入工作分支后，通过 `/wt-review` 根据验收文档进行 review，完成全景检查、补漏、验收和清理。
-2. n 个并行子 session：根据任务预期选择模型启动；使用 `/wt` 命令创建 worktree 并进入工作目录。如果是 `full` 模式，则生成详细的契约文件 `.claude/wt/<名>.md`，提供验收标准以及打回记录。然后调用 `wt-up.sh` 分配 port，以便在 session 内开发的过程中实时调整代码。
-3. 完成之后使用 `/wt-done`：执行 `pnpm` 自检、冒烟测试，并补充验收标准供 `/wt-review` 使用（仅 `full` 模式）；随后合并、回写契约，标记为“待验收”。
-4. n 个子 session 完成之后，可以按开发者自己的模块划分，在主 session 中统一运行 `/wt-review` 进行验收和跨 feature 集成检查。没有通过验收的任务可以打回重写，并由子 session 继续开发。
+1. 主 session：负责 inspect，跟进远端、本地仓库状态以及各分支状况；在各分支实现合入工作分支后，通过 `/wt:review` 根据验收文档进行 review，完成全景检查、补漏、验收和清理。
+2. n 个并行子 session：根据任务预期选择模型启动；使用 `/wt:new` 命令创建 worktree 并进入工作目录。如果是 `full` 模式，则生成详细的契约文件 `.claude/wt/<名>.md`，提供验收标准以及打回记录。然后调用 `wt-up.sh` 分配 port，以便在 session 内开发的过程中实时调整代码。
+3. 完成之后使用 `/wt:done`：执行 `pnpm` 自检、冒烟测试，并补充验收标准供 `/wt:review` 使用（仅 `full` 模式）；随后合并、回写契约，标记为“待验收”。
+4. n 个子 session 完成之后，可以按开发者自己的模块划分，在主 session 中统一运行 `/wt:review` 进行验收和跨 feature 集成检查。没有通过验收的任务可以打回重写，并由子 session 继续开发。
 
 整个 workflow 围绕以下几点核心设计：
 
