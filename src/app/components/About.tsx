@@ -1,9 +1,9 @@
 import React from 'react';
 import { BiLogoGithub } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
-import { FaInstagram } from 'react-icons/fa';
+// import { FaInstagram } from 'react-icons/fa';
 import { FaWeixin } from 'react-icons/fa';
-import { FiFileText } from 'react-icons/fi';
+// import { FiFileText } from 'react-icons/fi';
 
 type ContactLink = {
     icon: React.ReactNode;
@@ -25,23 +25,23 @@ export const About = () => {
             label: 'Email',
             url: 'mailto:mrliuzeyou@outlook.com',
         },
-        {
-            icon: <FaInstagram size={20} />,
-            label: 'Instagram',
-            url: 'https://www.instagram.com/ryuteakwoo/',
-        },
+        // {
+        //     icon: <FaInstagram size={20} />,
+        //     label: 'Instagram',
+        //     url: 'https://www.instagram.com/ryuteakwoo/',
+        // },
         {
             icon: <FaWeixin size={20} />,
             label: 'WeChat',
             url: '/staticPage/wechatQRcode',
         },
-        {
-            icon: <FiFileText size={20} />,
-            label: 'Résumé',
-            url: '/resume.pdf',
-            download: true,
-            tooltip: 'October 2025 version',
-        },
+        // {
+        //     icon: <FiFileText size={20} />,
+        //     label: 'Résumé',
+        //     url: '/resume.pdf',
+        //     download: true,
+        //     tooltip: 'October 2025 version',
+        // },
     ];
 
     return (
